@@ -1,15 +1,15 @@
 FROM node:12.18
 
 # Copy source code
-COPY . /app
+COPY . /usr/src/app
 
 # Change working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Install dependencies
 RUN yarn install
 
-EXPOSE 80
+EXPOSE 8080
 
 # Launch application
 ENTRYPOINT [ "yarn", "start" ]
