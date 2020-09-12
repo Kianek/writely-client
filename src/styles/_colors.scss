@@ -1,0 +1,14 @@
+$snow: #fffbfe;
+$gray-web: #7a7d7d;
+$light-gray: #d0cfcf;
+$dark-liver: #565254;
+$white: #ffffff;
+$black: #000000;
+
+$success: #53f82a;
+$danger: #ff0000;
+$info: #0066ff;
+
+@mixin shadow {
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+}

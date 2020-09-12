@@ -1,0 +1,28 @@
+@import './colors.scss';
+
+nav {
+  background-color: $snow;
+  width: 100%;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+    width: 80%;
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+footer {
+  background-color: $snow;
+  padding: 1rem;
+  margin-top: auto;
+  text-align: center;
+}
