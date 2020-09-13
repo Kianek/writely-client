@@ -14,7 +14,7 @@ function Button({
   link,
   to,
   children,
-  eventHandler,
+  onClick,
 }) {
   const activeStyles = {
     'branding': branding,
@@ -33,8 +33,9 @@ function Button({
     </Link>
   ) : (
     <button
+      type="button"
       className={classes}
-      onClick={eventHandler}
+      onClick={onClick}
       data-testid="plainButton"
     >
       {children}
