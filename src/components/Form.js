@@ -1,7 +1,12 @@
 import React from 'react';
+import '../styles/_forms.scss';
 
 function Form(props) {
-  return <form data-testid="formComponent">I am a form</form>;
+  return (
+    <form onSubmit={props.onSubmit} data-testid="formComponent">
+      {props.children}
+    </form>
+  );
 }
 
 export default Form;
