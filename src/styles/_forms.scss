@@ -1,0 +1,10 @@
+@import './colors.scss';
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  padding: 1rem;
+  width: 300px;
+}
