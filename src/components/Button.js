@@ -17,6 +17,7 @@ function Button({
   onClick,
   submit,
   disabled,
+  toggled,
 }) {
   const activeStyles = {
     'branding': branding,
@@ -27,6 +28,7 @@ function Button({
     'large': large,
     'block': block,
     'disabled': disabled,
+    'toggled': toggled,
   };
   const classes = classNames('btn', activeStyles);
 
