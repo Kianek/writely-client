@@ -15,6 +15,8 @@ function Button({
   to,
   children,
   onClick,
+  submit,
+  disabled,
 }) {
   const activeStyles = {
     'branding': branding,
@@ -24,6 +26,7 @@ function Button({
     'small': small,
     'large': large,
     'block': block,
+    'disabled': disabled,
   };
   const classes = classNames('btn', activeStyles);
 
@@ -33,7 +36,8 @@ function Button({
     </Link>
   ) : (
     <button
-      type="button"
+      type={submit ? submit : 'button'}
+      disabled={disabled ? true : false}
       className={classes}
       onClick={onClick}
       data-testid="plainButton"
