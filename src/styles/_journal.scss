@@ -1,0 +1,26 @@
+@import './_colors.scss';
+
+.journal {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+
+  .journal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px $light-gray;
+    border-radius: 3px;
+    height: 50px;
+    width: 200px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover .journal-content {
+    transform: translateY(-3px);
+  }
+}
