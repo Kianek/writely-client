@@ -18,6 +18,7 @@ function Button({
   submit,
   disabled,
   toggled,
+  id,
 }) {
   const activeStyles = {
     'branding': branding,
@@ -38,6 +39,7 @@ function Button({
     </Link>
   ) : (
     <button
+      id={id ? id : null}
       type={submit ? submit : 'button'}
       disabled={disabled ? true : false}
       className={classes}
