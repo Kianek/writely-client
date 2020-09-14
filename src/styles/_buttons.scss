@@ -37,6 +37,16 @@
   }
 }
 
+.disabled {
+  background-color: $light-gray;
+  color: $white;
+
+  &:hover {
+    color: $white;
+    cursor: not-allowed;
+  }
+}
+
 .dark {
   background-color: $dark-liver;
   color: $snow;
