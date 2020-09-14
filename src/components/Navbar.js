@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProfileButton from './ProfileButton';
 import Button from './Button';
 import Menu from './Menu';
@@ -7,6 +7,22 @@ import '../styles/_layout.scss';
 function Navbar() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const toggleDropdown = () => setDropdownVisible(!dropdownVisible);
+
+  useEffect(() => {
+    const handler = (event) => {
+      const element = document.querySelector('.dropdown-menu');
+
+      if (element && !element.contains(event.target)) {
+        toggleDropdown();
+      }
+    };
+
+    document.addEventListener('click', handler);
+
+    return () => {
+      document.removeEventListener('click', handler);
+    };
+  });
 
   return (
     <nav>
