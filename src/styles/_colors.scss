@@ -1,4 +1,4 @@
-$snow: #fffbfe;
+$snow: #ffe2f8;
 $gray-web: #7a7d7d;
 $light-gray: #d0cfcf;
 $dark-liver: #565254;
@@ -11,4 +11,8 @@ $info: #0066ff;
 
 @mixin shadow {
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+@mixin hover {
+  background-color: darken($snow, 3);
 }
