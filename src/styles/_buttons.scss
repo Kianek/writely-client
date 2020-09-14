@@ -24,8 +24,7 @@
   box-shadow: none;
 
   &:hover {
-    background-color: rgba($black, 0.2);
-    color: $snow;
+    @include hover;
   }
 }
 
@@ -33,7 +32,7 @@
   box-shadow: none;
 
   &:hover {
-    background-color: rgba($light-gray, 0.5);
+    @include hover;
   }
 }
 
@@ -74,4 +73,8 @@
   &:hover {
     background-color: inherit;
   }
+}
+
+.toggled {
+  @include hover;
 }
