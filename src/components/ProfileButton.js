@@ -4,7 +4,7 @@ import '../styles/_buttons.scss';
 
 function ProfileButton({ toggled, onClick }) {
   return (
-    <Button flat toggled={toggled} onClick={onClick}>
+    <Button id="profile-button" flat toggled={toggled} onClick={onClick}>
       <i className="fas fa-user" />
     </Button>
   );
