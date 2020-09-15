@@ -34,7 +34,12 @@ function Button({
   const classes = classNames('btn', activeStyles);
 
   return link ? (
-    <Link className={classes} to={to} data-testid="linkButton">
+    <Link
+      className={classes}
+      to={to}
+      onClick={onClick}
+      data-testid="linkButton"
+    >
       {children}
     </Link>
   ) : (
