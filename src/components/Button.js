@@ -18,6 +18,9 @@ function Button({
   submit,
   disabled,
   toggled,
+  danger,
+  info,
+  success,
   id,
 }) {
   const activeStyles = {
@@ -30,6 +33,9 @@ function Button({
     block,
     disabled,
     toggled,
+    danger,
+    info,
+    success,
   };
   const classes = classNames('btn', activeStyles);
 
