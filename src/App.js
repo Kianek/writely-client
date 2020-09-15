@@ -18,12 +18,22 @@ function App() {
       <Navbar />
       <Page>
         <Switch>
-          <Route exact path="/" component={SignIn} />
-          <Route path="/register" component={Register} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/journal/:id" component={JournalView} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/settings/change-password" component={ChangePassword} />
+          <Route exact path="/">
+            <SignIn />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/journal/:id">
+            <JournalView />
+          </Route>
+          <Route path="/settings">
+            <Settings />
+          </Route>
+          <Route exact path="/change-password" component={ChangePassword} />
         </Switch>
       </Page>
       <Footer />
