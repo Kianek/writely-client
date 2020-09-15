@@ -1,4 +1,4 @@
-@import './colors.scss';
+@import './_colors.scss';
 
 .panel {
   display: flex;
@@ -8,4 +8,13 @@
   border-radius: 2px;
   margin: auto;
   padding: 0.5rem;
+
+  button,
+  a {
+    margin: 0.5rem;
+  }
+}
+
+.wide {
+  width: 500px;
 }
