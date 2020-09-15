@@ -10,8 +10,8 @@ function Settings() {
 
   return (
     <>
-      <ToolBar>
-        <Button link to="/dashboard">
+      <ToolBar left>
+        <Button flat link to="/dashboard">
           <i className="fas fa-arrow-left" /> Dashboard
         </Button>
       </ToolBar>
