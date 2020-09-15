@@ -34,10 +34,10 @@ function Navbar() {
           <>
             <ProfileButton toggled={dropdownVisible} onClick={toggleDropdown} />
             <Menu showMenu={dropdownVisible}>
-              <Button block flat link to="/settings">
+              <Button block flat link to="/settings" onClick={toggleDropdown}>
                 Settings
               </Button>
-              <Button block flat link to="/">
+              <Button block flat link to="/" onClick={toggleDropdown}>
                 Sign Out
               </Button>
             </Menu>
