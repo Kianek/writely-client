@@ -3,6 +3,11 @@
 .journal {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+  margin: 1rem;
+
+  a {
+    text-decoration: none;
+  }
 
   .journal-content {
     display: flex;
@@ -17,7 +22,8 @@
   }
 
   &:hover {
-    box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
   }
 
   &:hover .journal-content {
