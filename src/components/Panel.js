@@ -1,8 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
 import '../styles/_panel.scss';
 
-function Panel(props) {
-  return <div className="panel">{props.children}</div>;
+function Panel({ wide, children }) {
+  return <div className={classNames('panel', { wide })}>{children}</div>;
 }
 
 export default Panel;
