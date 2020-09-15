@@ -1,12 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/_journal.scss';
 
-function Journal({ title }) {
+function Journal({ journal }) {
   return (
     <li className="journal">
-      <div className="journal-content">
-        <h3>{title}</h3>
-      </div>
+      <Link to={`/journal/${journal.id}`}>
+        <div className="journal-content">
+          <h3>{journal.title}</h3>
+        </div>
+      </Link>
     </li>
   );
 }
