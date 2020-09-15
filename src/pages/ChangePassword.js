@@ -17,7 +17,7 @@ function ChangePassword() {
   return (
     <>
       <ToolBar>
-        <Button link to="/settings">
+        <Button flat link to="/settings">
           <i className="fas fa-arrow-left" /> Settings
         </Button>
       </ToolBar>
