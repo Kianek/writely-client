@@ -15,7 +15,7 @@ function Settings() {
           <i className="fas fa-arrow-left" /> Dashboard
         </Button>
       </ToolBar>
-      <Panel>
+      <Panel wide>
         <Button block flat link to="/change-password">
           Change Password
         </Button>
