@@ -46,6 +46,46 @@
   }
 }
 
+.toggled {
+  @include hover;
+}
+
+.danger {
+  background-color: $white;
+  border: solid 1px $danger;
+  color: $danger;
+
+  &:hover,
+  &.toggled {
+    background-color: $danger;
+    color: $white;
+  }
+}
+
+.info {
+  background-color: $white;
+  border: solid 1px $info;
+  color: $info;
+
+  &:hover,
+  &.toggled {
+    color: $white;
+    background-color: $info;
+  }
+}
+
+.success {
+  background-color: $white;
+  border: solid 1px $success;
+  color: $success;
+
+  &:hover,
+  &.toggled {
+    background-color: $success;
+    color: $white;
+  }
+}
+
 .dark {
   background-color: $dark-liver;
   color: $snow;
@@ -73,8 +113,4 @@
   &:hover {
     background-color: inherit;
   }
-}
-
-.toggled {
-  @include hover;
 }
