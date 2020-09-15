@@ -21,15 +21,15 @@ function Button({
   id,
 }) {
   const activeStyles = {
-    'branding': branding,
-    'outline': outline,
-    'flat': flat,
-    'dark': dark,
-    'small': small,
-    'large': large,
-    'block': block,
-    'disabled': disabled,
-    'toggled': toggled,
+    branding,
+    outline,
+    flat,
+    dark,
+    small,
+    large,
+    block,
+    disabled,
+    toggled,
   };
   const classes = classNames('btn', activeStyles);
 
