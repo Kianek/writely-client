@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "cypress": "^5.1.0",
+    "jest-emotion": "^10.0.32",
     "react-test-renderer": "^16.13.1"
   }
 }
