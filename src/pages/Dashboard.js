@@ -9,7 +9,8 @@ import mockJournals from '../data/mock-journals';
 import '../styles/_dashboard.scss';
 
 function Dashboard() {
-  const [showModal, setShowModal] = useState(true);
+  const [newJournalTitle, setNewJournalTitle] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [journals, setJournals] = useState(
     mockJournals.map((data) => <Journal key={data.id} journal={data} />)
@@ -21,6 +22,11 @@ function Dashboard() {
 
   function addJournal() {
     setShowModal(false);
+    setNewJournalTitle('');
+  }
+
+  function closeModal() {
+    setNewJournalTitle('');
   }
 
   function updateJournal() {}
@@ -30,15 +36,24 @@ function Dashboard() {
   return (
     <div id="dashboard">
       {showModal && (
-        <Modal onConfirm={addJournal} onCancel={() => setShowModal(false)}>
-          create journal
+        <Modal
+          heading="Create Journal"
+          onConfirm={addJournal}
+          onCancel={closeModal}
+        >
+          <TextInput
+            block
+            placeholder="Title"
+            value={newJournalTitle}
+            onChange={setNewJournalTitle}
+          />
         </Modal>
       )}
       <ToolBar right>
         <Button flat info toggled={editMode} onClick={toggleEditMode}>
           <i className="fas fa-edit" />
         </Button>
-        <Button flat success>
+        <Button flat success onClick={() => setShowModal(true)}>
           {editMode ? (
             <i className="fas fa-times" />
           ) : (
