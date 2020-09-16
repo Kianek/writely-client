@@ -16,7 +16,7 @@ function EntryView(props) {
       <form onSubmit={saveEntry}>
         <ToolBar right>
           <Button flat link to="/dashboard">
-            Back to Dashboard
+            <i className="fas fa-arrow-left" /> Dashboard
           </Button>
         </ToolBar>
         <h3>{props.journal}</h3>
