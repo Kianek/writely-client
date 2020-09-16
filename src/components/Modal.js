@@ -10,7 +10,7 @@ function Modal({ heading, children, onConfirm, onCancel }) {
         <h3>{heading}</h3>
         <p>{children}</p>
         <ToolBar right>
-          <Button flat onClick={onConfirm}>
+          <Button success flat onClick={onConfirm}>
             OK
           </Button>
           <Button danger flat onClick={onCancel}>
