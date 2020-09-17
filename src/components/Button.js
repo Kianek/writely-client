@@ -1,7 +1,55 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import '../styles/_buttons.scss';
+
+const buttonStyles = ({ button }) => css`
+  ${button.base};
+
+  &.branding {
+    ${button.branding}
+  }
+
+  &.toggled {
+    ${button.toggled}
+  }
+
+  &.flat {
+    ${button.flat}
+  }
+
+  &.outline {
+    ${button.outline}
+  }
+
+  &.success {
+    ${button.success}
+  }
+
+  &.info {
+    ${button.info}
+  }
+
+  &.danger {
+    ${button.danger}
+  }
+
+  &.disabled {
+    ${button.disabled}
+  }
+
+  &.large {
+    ${button.large}
+  }
+
+  &.small {
+    ${button.small}
+  }
+
+  &.block {
+    ${button.block}
+  }
+`;
 
 function Button({
   branding,
@@ -37,10 +85,11 @@ function Button({
     info,
     success,
   };
-  const classes = classNames('btn', activeStyles);
+  const classes = classNames(activeStyles);
 
   return link ? (
     <Link
+      css={buttonStyles}
       className={classes}
       to={to}
       onClick={onClick}
@@ -53,6 +102,7 @@ function Button({
       id={id ? id : null}
       type={submit ? submit : 'button'}
       disabled={disabled ? true : false}
+      css={buttonStyles}
       className={classes}
       onClick={onClick}
       data-testid="plainButton"
