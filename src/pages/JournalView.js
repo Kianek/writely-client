@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
+import { useState } from 'react';
 import Entry from '../components/Entry';
 import EntryList from '../components/EntryList';
 import EntryView from '../components/EntryView';
 import mockEntries from '../data/mock-entries';
-import '../styles/_journal-view.scss';
+
+const styles = (theme) => css`
+  ${theme.flex.row}
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: auto;
+  width: 100%;
+`;
 
 function JournalView() {
   const [entries, setEntries] = useState(
@@ -13,7 +23,7 @@ function JournalView() {
   function loadEntry() {}
 
   return (
-    <div id="journal-view">
+    <div css={styles}>
       <EntryList>{entries}</EntryList>
       <EntryView journal="Fancy Journal" />
     </div>

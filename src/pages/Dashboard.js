@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
+import { useState, useEffect } from 'react';
 import Button from '../components/Button';
 import JournalList from '../components/JournalList';
 import Journal from '../components/Journal';
@@ -6,7 +8,14 @@ import Modal from '../components/Modal';
 import TextInput from '../components/TextInput';
 import ToolBar from '../components/ToolBar';
 import mockJournals from '../data/mock-journals';
-import '../styles/_dashboard.scss';
+
+const dashboardStyles = css`
+  border-radius: 3px;
+  height: 100%;
+  margin: 2rem;
+  padding: 1rem;
+  width: 90%;
+`;
 
 function Dashboard() {
   const [newJournalTitle, setNewJournalTitle] = useState('');
@@ -34,7 +43,7 @@ function Dashboard() {
   function deleteJournal() {}
 
   return (
-    <div id="dashboard">
+    <div css={dashboardStyles} id="dashboard">
       {showModal && (
         <Modal
           heading="Create Journal"
