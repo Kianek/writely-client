@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core';
+import { jsx, css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import { Switch, Route } from 'react-router-dom';
-import './App.scss';
 
 import Navbar from './components/Navbar';
 import Page from './components/Page';
@@ -25,13 +24,36 @@ const theme = {
     white: '#fff',
     black: '#000',
     shadow: 'rgba(0,0,0,0.2)',
+    boxShadow: {
+      boxShadow: '0 0 4px 3px rgba(0, 0, 0, 0.2)',
+    },
+  },
+  container: {
+    block: {
+      display: 'block',
+    },
+  },
+  flex: {
+    column: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    row: {
+      display: 'flex',
+      flexDirection: 'row',
+    },
   },
 };
+
+const appStyles = (theme) => css`
+  ${theme.flex.column}
+  height: 100vh;
+`;
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div id="app" data-testid="appComponent">
+      <div css={appStyles} id="app" data-testid="appComponent">
         <Navbar />
         <Page>
           <Switch>
