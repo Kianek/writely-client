@@ -1,3 +1,5 @@
+import buttonTheme from './button-theme';
+
 const theme = {
   colors: {
     primary: '#ffe2f8',
@@ -16,6 +18,7 @@ const theme = {
   container: {
     block: {
       display: 'block',
+      width: '100%',
     },
   },
   flex: {
@@ -28,6 +31,10 @@ const theme = {
       flexDirection: 'row',
     },
   },
+  button: {},
 };
+
+const buttonThemes = buttonTheme(theme);
+theme.button = buttonThemes;
 
 export default theme;
