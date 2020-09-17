@@ -1,8 +1,40 @@
-import React, { useState } from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
+import { useState } from 'react';
 import TextInput from './TextInput';
 import Button from './Button';
 import ToolBar from './ToolBar';
-import '../styles/_entry-view.scss';
+
+const styles = (theme) => css`
+  ${theme.flex.row}
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 80%;
+
+  form {
+    width: 80%;
+
+    h3 {
+      margin-bottom: 1.5rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+    }
+
+    textarea {
+      border: solid 1px ${theme.colors.lightGray};
+      border-radius: 3px;
+      font-family: 'Roboto', Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      height: 20rem;
+      margin-bottom: 0.5rem;
+      padding: 0.25rem;
+    }
+  }
+`;
 
 function EntryView(props) {
   const [title, setTitle] = useState('');
@@ -12,7 +44,7 @@ function EntryView(props) {
   }
 
   return (
-    <div id="entry-view">
+    <div css={styles} id="entry-view">
       <form onSubmit={saveEntry}>
         <ToolBar right>
           <Button flat link to="/dashboard">

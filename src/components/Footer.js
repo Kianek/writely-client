@@ -1,8 +1,19 @@
-import React from 'react';
-import '../styles/_layout.scss';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
+
+const styles = (theme) => css`
+  background-color: ${theme.colors.primary};
+  padding: 1rem;
+  margin-top: auto;
+  text-align: center;
+`;
 
 function Footer() {
-  return <footer>Writely &copy; {new Date().getFullYear()}</footer>;
+  return (
+    <footer css={styles}>
+      Copyright &copy; {new Date().getFullYear()} Writely{' '}
+    </footer>
+  );
 }
 
 export default Footer;
