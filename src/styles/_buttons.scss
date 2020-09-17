@@ -58,8 +58,8 @@
 
   &:hover,
   &.toggled {
-    background-color: $danger;
     color: $white;
+    background-color: $danger;
   }
 }
 
@@ -82,14 +82,9 @@
 
   &:hover,
   &.toggled {
-    background-color: $success;
     color: $white;
+    background-color: $success;
   }
-}
-
-.dark {
-  background-color: $dark-liver;
-  color: $snow;
 }
 
 .small {
