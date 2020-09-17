@@ -3,8 +3,14 @@ import { jsx, css } from '@emotion/core';
 import classNames from 'classnames';
 
 const styles = (theme) => css`
+  background-color: ${theme.colors.white};
+  border: none;
   color: ${theme.colors.darkGray};
   font-size: 1rem;
+
+  &:hover {
+    background-color: ${theme.colors.white};
+  }
 
   &.danger {
     color: ${theme.colors.danger};
