@@ -7,6 +7,7 @@ const inputGroup = (theme) => css`
 `;
 
 const inputStyles = (theme) => css`
+  ${theme.container.block}
   border: solid 1px ${theme.colors.lightGray};
   border-radius: 3px;
   font-size: 1rem;
