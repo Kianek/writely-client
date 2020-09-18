@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+/** @jsxFrag Fragment */
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
+import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Panel from '../components/Panel';
 import Form from '../components/Form';
@@ -13,6 +16,7 @@ const linkStyles = {
 };
 
 function SignIn() {
+  const [rememberMe, setRememberMe] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,10 +24,11 @@ function SignIn() {
     event.preventDefault();
     setEmail('');
     setPassword('');
+    setRememberMe(false);
   }
 
   return (
-    <>
+    <Fragment>
       <Panel>
         <h2>Sign In</h2>
         <Form onSubmit={handleSubmit}>
@@ -40,6 +45,24 @@ function SignIn() {
             onChange={setPassword}
             value={password}
           />
+          <div
+            css={(theme) => css`
+              ${theme.flex.row}
+              align-items: center;
+              label {
+                color: ${theme.colors.darkGray};
+                margin-right: 0.5rem;
+              }
+            `}
+          >
+            <label htmlFor="rememberMe">Remember Me</label>
+            <input
+              type="checkbox"
+              name="rememberMe"
+              checked={rememberMe}
+              onClick={() => setRememberMe(!rememberMe)}
+            />
+          </div>
           <Button block outline onClick={handleSubmit}>
             Sign In
           </Button>
@@ -49,7 +72,7 @@ function SignIn() {
           No account? Sign up now!
         </Link>
       </Panel>
-    </>
+    </Fragment>
   );
 }
 
