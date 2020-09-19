@@ -8,6 +8,7 @@ import Form from '../components/Form';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import HorizontalRule from '../components/HorizontalRule';
+import { isEmail, isValid } from '../validation';
 
 const linkStyles = {
   color: '#7a7d7d',
@@ -37,6 +38,7 @@ function SignIn() {
             placeholder="Email"
             onChange={setEmail}
             value={email}
+            rules={[isValid, isEmail]}
           />
           <TextInput
             block
@@ -44,6 +46,7 @@ function SignIn() {
             placeholder="Password"
             onChange={setPassword}
             value={password}
+            rules={[isValid]}
           />
           <div
             css={(theme) => css`
@@ -60,7 +63,7 @@ function SignIn() {
               type="checkbox"
               name="rememberMe"
               checked={rememberMe}
-              onClick={() => setRememberMe(!rememberMe)}
+              onChange={() => setRememberMe(!rememberMe)}
             />
           </div>
           <Button block outline onClick={handleSubmit}>
