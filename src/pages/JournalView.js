@@ -17,7 +17,7 @@ const styles = (theme) => css`
 
 function JournalView() {
   const [entries, setEntries] = useState(
-    mockEntries.map((entry) => <Entry entry={entry} />)
+    mockEntries.map((entry) => <Entry key={entry.id} entry={entry} />)
   );
 
   function loadEntry() {}
