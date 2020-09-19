@@ -19,7 +19,7 @@ describe('validation functions', () => {
     });
 
     it('should return a message that the value is too short', () => {
-      expect(minLen('boo')).toEqual('Must be at least 6');
+      expect(minLen('boo')).toEqual('must be at least 6');
     });
   });
 
@@ -29,7 +29,7 @@ describe('validation functions', () => {
     });
 
     it('should return a message that the string is empty', () => {
-      expect(isValid('')).toEqual('Must not be empty');
+      expect(isValid('')).toEqual('must not be empty');
     });
   });
 
@@ -39,7 +39,7 @@ describe('validation functions', () => {
     });
 
     it('should return a message that the email must be valid', () => {
-      expect(isEmail('not an email')).toEqual('Must be a valid email');
+      expect(isEmail('not an email')).toEqual('must be a valid email');
     });
   });
 
@@ -50,7 +50,7 @@ describe('validation functions', () => {
 
     it('should return a message that the string must include at least one special character', () => {
       expect(containsSpecialChars('no specials here')).toEqual(
-        'Must contain at least 1 non-letter and non-numeric character'
+        'must contain at least 1 non-letter and non-numeric character'
       );
     });
   });
