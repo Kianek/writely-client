@@ -1,6 +1,10 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { useState } from 'react';
 import classNames from 'classnames';
+import Paragraph from './Paragraph';
+import { debounce } from 'lodash';
+import { validationExecutor } from '../validation';
 
 const inputGroup = (theme) => css`
   ${theme.container.block}
@@ -19,15 +23,35 @@ const labelStyles = (theme) => css`
   ${theme.container.block}
 `;
 
-function TextInput({ type, onChange, value, name, label, placeholder, block }) {
+function TextInput({
+  type,
+  onChange,
+  value,
+  name,
+  label,
+  placeholder,
+  block,
+  rules,
+}) {
+  const [errors, setErrors] = useState('');
+  const debouncedRules = debounce(() =>
+    setErrors(validationExecutor(value, rules), 500)
+  );
+
   const handleChange = (event) => {
     onChange(event.target.value);
+  };
+
+  const executeRules = () => {
+    if (rules) {
+      debouncedRules();
+    }
   };
 
   return (
     <div
       css={inputGroup}
-      className={classNames({ 'input-group': label, 'block': block })}
+      className={classNames({ 'input-group': label, block })}
     >
       {label && (
         <label css={labelStyles} for={name}>
@@ -41,9 +65,13 @@ function TextInput({ type, onChange, value, name, label, placeholder, block }) {
         name={name}
         type={type ? type : 'text'}
         onChange={handleChange}
+        onKeyUp={executeRules}
         placeholder={placeholder}
         value={value}
       />
+      <Paragraph danger small>
+        {errors}
+      </Paragraph>
     </div>
   );
 }
