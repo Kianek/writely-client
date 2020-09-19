@@ -7,6 +7,7 @@ const styles = (theme) => css`
   border: none;
   color: ${theme.colors.darkGray};
   font-size: 1rem;
+  margin-bottom: 0.5rem;
 
   &:hover {
     background-color: ${theme.colors.white};
@@ -17,7 +18,7 @@ const styles = (theme) => css`
   }
 
   &.small {
-    font-size: 0.8rem;
+    font-size: 0.625rem;
   }
 
   &.large {
@@ -25,11 +26,11 @@ const styles = (theme) => css`
   }
 `;
 
-function Paragraph({ small, large, children, danger, errors }) {
-  const classes = classNames('paragraph', {
+function Paragraph({ small, large, children, danger }) {
+  const classes = classNames({
     small,
     large,
-    'danger': errors || danger ? true : false,
+    danger,
   });
   return (
     <p css={styles} className={classes}>
