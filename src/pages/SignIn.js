@@ -10,11 +10,15 @@ import TextInput from '../components/TextInput';
 import HorizontalRule from '../components/HorizontalRule';
 import { isEmail, isValid, isEmpty } from '../validation';
 
-const linkStyles = {
-  color: '#7a7d7d',
-  marginBottom: '0.5rem',
-  textDecoration: 'none',
-};
+const linkStyles = (theme) => css`
+  color: ${theme.colors.darkGray};
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  &:hover {
+    color: ${theme.colors.info};
+    text-decoration: underline;
+  }
+`;
 
 function SignIn() {
   const [rememberMe, setRememberMe] = useState(false);
@@ -82,7 +86,7 @@ function SignIn() {
           </Button>
         </Form>
         <HorizontalRule />
-        <Link style={linkStyles} to="/register">
+        <Link css={linkStyles} to="/register">
           No account? Sign up now!
         </Link>
       </Panel>
