@@ -3,7 +3,7 @@ import validator from 'validator';
 export const isEmpty = validator.isEmpty;
 
 export const minLength = (min) => (val) =>
-  (!!val && val.length >= min) || `must be at least ${min}`;
+  (!!val && val.length >= min) || `must contain at least ${min} characters`;
 
 export const isValid = (val) =>
   (!!val && val.length > 0) || `must not be empty`;
