@@ -15,6 +15,10 @@ export const containsSpecialChars = (val) =>
   (!!val && validator.matches(val, /[?!@#$%^&*|]/i)) ||
   `must contain at least 1 non-letter and non-numeric character`;
 
+export const containsNumbers = (val) =>
+  (!!val && validator.matches(val, /[0-9]+/i)) ||
+  `must contain at least 1 number`;
+
 export const validationExecutor = (value, validationFunctions) => {
   let errors = [];
   validationFunctions.forEach((func) => {
