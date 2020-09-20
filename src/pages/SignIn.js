@@ -17,6 +17,7 @@ const linkStyles = {
 };
 
 function SignIn() {
+  const [errorState, setErrorState] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,6 +40,7 @@ function SignIn() {
             onChange={setEmail}
             value={email}
             rules={[isValid, isEmail]}
+            errorState={setErrorState}
           />
           <TextInput
             block
@@ -47,6 +49,7 @@ function SignIn() {
             onChange={setPassword}
             value={password}
             rules={[isValid]}
+            errorState={setErrorState}
           />
           <div
             css={(theme) => css`
@@ -66,7 +69,7 @@ function SignIn() {
               onChange={() => setRememberMe(!rememberMe)}
             />
           </div>
-          <Button block outline onClick={handleSubmit}>
+          <Button disabled={errorState} block outline onClick={handleSubmit}>
             Sign In
           </Button>
         </Form>
