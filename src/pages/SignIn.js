@@ -8,7 +8,7 @@ import Form from '../components/Form';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import HorizontalRule from '../components/HorizontalRule';
-import { isEmail, isValid } from '../validation';
+import { isEmail, isValid, isEmpty } from '../validation';
 
 const linkStyles = {
   color: '#7a7d7d',
@@ -17,13 +17,21 @@ const linkStyles = {
 };
 
 function SignIn() {
-  const [errorState, setErrorState] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState(true);
+  const [passwordError, setPasswordError] = useState(true);
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    const errorState = emailError || passwordError;
+    const emptyFields = [email, password].some((val) => isEmpty(val));
+    if (emptyFields || errorState) {
+      return;
+    }
+
     setEmail('');
     setPassword('');
     setRememberMe(false);
@@ -40,7 +48,7 @@ function SignIn() {
             onChange={setEmail}
             value={email}
             rules={[isValid, isEmail]}
-            errorState={setErrorState}
+            errorState={setEmailError}
           />
           <TextInput
             block
@@ -49,7 +57,7 @@ function SignIn() {
             onChange={setPassword}
             value={password}
             rules={[isValid]}
-            errorState={setErrorState}
+            errorState={setPasswordError}
           />
           <div
             css={(theme) => css`
@@ -69,7 +77,7 @@ function SignIn() {
               onChange={() => setRememberMe(!rememberMe)}
             />
           </div>
-          <Button disabled={errorState} block outline onClick={handleSubmit}>
+          <Button block outline onClick={handleSubmit}>
             Sign In
           </Button>
         </Form>
