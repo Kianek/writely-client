@@ -36,7 +36,7 @@ function TextInput({
 }) {
   const [errors, setErrors] = useState('');
   const debouncedRules = debounce(() =>
-    setErrors(validationExecutor(value, rules), 500)
+    setErrors(validationExecutor(value, rules), 200)
   );
 
   const handleChange = (event) => {
