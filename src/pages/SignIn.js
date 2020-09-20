@@ -9,6 +9,7 @@ import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import HorizontalRule from '../components/HorizontalRule';
 import { isEmail, isValid, isEmpty } from '../validation';
+import useField from '../hooks/useField';
 
 const linkStyles = (theme) => css`
   color: ${theme.colors.darkGray};
@@ -22,10 +23,8 @@ const linkStyles = (theme) => css`
 
 function SignIn() {
   const [rememberMe, setRememberMe] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState(true);
-  const [passwordError, setPasswordError] = useState(true);
+  const [email, setEmail, emailError, setEmailError] = useField();
+  const [password, setPassword, passwordError, setPasswordError] = useField();
 
   function handleSubmit(event) {
     event.preventDefault();
