@@ -34,8 +34,11 @@ const buttonStyles = ({ button }) => css`
     ${button.danger}
   }
 
-  &.disabled {
+  &.disabled,
+  &.disabled:hover {
     ${button.disabled}
+    &:hover {
+    }
   }
 
   &.large {
