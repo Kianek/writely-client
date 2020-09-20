@@ -32,6 +32,7 @@ function TextInput({
   placeholder,
   block,
   rules,
+  errorState,
 }) {
   const [errors, setErrors] = useState('');
   const debouncedRules = debounce(() =>
@@ -45,6 +46,10 @@ function TextInput({
   const executeRules = () => {
     if (rules) {
       debouncedRules();
+
+      if (errorState) {
+        errors ? errorState(true) : errorState(false);
+      }
     }
   };
 
