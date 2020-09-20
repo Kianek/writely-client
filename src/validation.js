@@ -1,10 +1,12 @@
 import validator from 'validator';
 
+export const isEmpty = validator.isEmpty;
+
 export const minLength = (min) => (val) =>
   (!!val && val.length >= min) || `must be at least ${min}`;
 
 export const isValid = (val) =>
-  (!!val && !validator.isEmpty(val)) || `must not be empty`;
+  (!!val && val.length > 0) || `must not be empty`;
 
 export const isEmail = (val) =>
   (!!val && validator.isEmail(val)) || `must be a valid email`;
