@@ -3,6 +3,7 @@ import {
   isValid,
   isEmail,
   containsSpecialChars,
+  containsNumbers,
   validationExecutor,
 } from '../validation.js';
 
@@ -19,7 +20,7 @@ describe('validation functions', () => {
     });
 
     it('should return a message that the value is too short', () => {
-      expect(minLen('boo')).toEqual('must be at least 6');
+      expect(minLen('boo')).toEqual('must contain at least 6 characters');
     });
   });
 
@@ -51,6 +52,18 @@ describe('validation functions', () => {
     it('should return a message that the string must include at least one special character', () => {
       expect(containsSpecialChars('no specials here')).toEqual(
         'must contain at least 1 non-letter and non-numeric character'
+      );
+    });
+  });
+
+  describe('#containsNumbers', () => {
+    it('should should return true that the string contains at least one number', () => {
+      expect(containsNumbers('password123')).toBeTruthy();
+    });
+
+    it('should return a message that the string must include at least one number', () => {
+      expect(containsNumbers('nonumbershere')).toEqual(
+        'must contain at least 1 number'
       );
     });
   });
