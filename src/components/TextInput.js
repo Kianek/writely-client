@@ -47,9 +47,7 @@ function TextInput({
     if (rules) {
       debouncedRules();
 
-      if (errorState) {
-        errors ? errorState(true) : errorState(false);
-      }
+      errors.length > 0 ? errorState(true) : errorState(false);
     }
   };
 
