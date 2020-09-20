@@ -5,16 +5,64 @@ import Form from '../components/Form';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import HorizontalRule from '../components/HorizontalRule';
+import {
+  isEmpty,
+  isValid,
+  isEmail,
+  minLength,
+  containsSpecialChars,
+  containsNumbers,
+} from '../validation';
+import useField from '../hooks/useField';
 
 function Register() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [username, setUsername, usernameError, setUsernameError] = useField();
+  const [email, setEmail, emailError, setEmailError] = useField();
+  const [
+    firstName,
+    setFirstName,
+    firstNameError,
+    setFirstNameError,
+  ] = useField();
+  const [lastName, setLastName, lastNameError, setLastNameError] = useField();
+  const [password, setPassword, passwordError, setPasswordError] = useField();
+  const [
+    confirmPassword,
+    setConfirmPassword,
+    confirmPasswordError,
+    setConfirmPasswordError,
+  ] = useField();
 
   function handleRegistration() {
+    if (confirmPassword !== password) {
+      setPasswordsMatch(false);
+      return;
+    } else {
+      setPasswordsMatch(true);
+    }
+
+    const errorState = [
+      usernameError,
+      emailError,
+      firstNameError,
+      lastNameError,
+      passwordError,
+      confirmPasswordError,
+    ].some((val) => val !== false);
+    const emptyFields = [
+      username,
+      email,
+      firstName,
+      lastName,
+      password,
+      confirmPassword,
+    ].some((val) => isEmpty(val));
+    if (emptyFields || errorState) {
+      console.log('error');
+      return;
+    }
+
     [
       setUsername,
       setEmail,
@@ -36,24 +84,32 @@ function Register() {
             placeholder="Username"
             value={username}
             onChange={setUsername}
+            rules={[isValid]}
+            errorState={setUsernameError}
           />
           <TextInput
             block
             placeholder="Email"
             value={email}
             onChange={setEmail}
+            rules={[isValid, isEmail]}
+            errorState={setEmailError}
           />
           <TextInput
             block
             placeholder="First Name"
             value={firstName}
             onChange={setFirstName}
+            rules={[isValid]}
+            errorState={setFirstNameError}
           />
           <TextInput
             block
             placeholder="Last Name"
             value={lastName}
             onChange={setLastName}
+            rules={[isValid]}
+            errorState={setLastNameError}
           />
           <HorizontalRule />
           <Paragraph danger small>
@@ -65,13 +121,32 @@ function Register() {
             placeholder="Password"
             value={password}
             onChange={setPassword}
+            rules={[
+              isValid,
+              minLength(6),
+              containsSpecialChars,
+              containsNumbers,
+            ]}
+            errorState={setPasswordError}
           />
           <TextInput
             block
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={setConfirmPassword}
+            rules={[
+              isValid,
+              minLength(6),
+              containsSpecialChars,
+              containsNumbers,
+            ]}
+            errorState={setConfirmPasswordError}
           />
+          {!passwordsMatch && (
+            <Paragraph danger small>
+              Passwords must match
+            </Paragraph>
+          )}
           <Button block onClick={handleRegistration} outline type="submit">
             Sign Up
           </Button>
