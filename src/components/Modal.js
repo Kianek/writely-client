@@ -29,7 +29,7 @@ function Modal({ heading, children, onConfirm, onCancel }) {
     <div css={modalBackground} id="modal-bg">
       <div css={modalBody} id="modal-body">
         <h3 css={{ marginBottom: '1rem' }}>{heading}</h3>
-        <p>{children}</p>
+        <div>{children}</div>
         <ToolBar right>
           <Button success flat onClick={onConfirm}>
             OK
