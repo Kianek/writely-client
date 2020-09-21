@@ -36,7 +36,7 @@ function Dashboard() {
         key={data.id}
         journal={data}
         deleteHandler={deleteJournal}
-        updateHandler={updateJournal}
+        modalHandler={() => setShowModal(true)}
       />
     ));
   }
@@ -51,10 +51,14 @@ function Dashboard() {
   }
 
   function closeModal() {
+    setShowModal(false);
     setNewJournalTitle('');
   }
 
-  function updateJournal() {}
+  function updateJournal() {
+    setShowModal(false);
+    setNewJournalTitle('');
+  }
 
   function deleteJournal() {}
 
@@ -62,8 +66,8 @@ function Dashboard() {
     <div css={dashboardStyles} id="dashboard">
       {showModal && (
         <Modal
-          heading="Create Journal"
-          onConfirm={addJournal}
+          heading={editMode ? 'Update Journal' : 'Create Journal'}
+          onConfirm={editMode ? updateJournal : addJournal}
           onCancel={closeModal}
         >
           <TextInput
