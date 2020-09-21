@@ -1,5 +1,6 @@
+import entries from './mock-entries';
 const mockJournals = [
-  { id: 1, title: "Yo, I'm a Journal", entries: [{}] },
+  { id: 1, title: "Yo, I'm a Journal", entries },
   { id: 2, title: 'Me Too, lol' },
   { id: 3, title: 'Same here' },
   { id: 4, title: 'Yodely Doo' },
