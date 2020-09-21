@@ -43,10 +43,10 @@ const timesBtn = (theme) => css`
   }
 `;
 
-function EditJournal({ journal, deleteHandler, updateHandler }) {
+function EditJournal({ journal, deleteHandler, modalHandler }) {
   return (
     <li css={styles}>
-      <div className="journal-content" onClick={updateHandler}>
+      <div className="journal-content" onClick={modalHandler}>
         <h4>
           {journal.title}{' '}
           <i onClick={deleteHandler} css={timesBtn} className="fas fa-times" />
