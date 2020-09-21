@@ -37,7 +37,7 @@ function Journal({ journal }) {
     <li css={styles}>
       <Link to={`/journal/${journal.id}`}>
         <div className="journal-content">
-          <h3>{journal.title}</h3>
+          <h4>{journal.title}</h4>
         </div>
       </Link>
     </li>
