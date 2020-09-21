@@ -47,7 +47,7 @@ function EntryView(props) {
     <div css={styles} id="entry-view">
       <form onSubmit={saveEntry}>
         <ToolBar right>
-          <Button flat link to="/dashboard">
+          <Button outline link to="/dashboard">
             <i className="fas fa-arrow-left" /> Dashboard
           </Button>
         </ToolBar>
@@ -59,7 +59,7 @@ function EntryView(props) {
           onChange={setTitle}
         />
         <textarea placeholder="Tell me your deepest, darkest secrets.."></textarea>
-        <Button block flat onClick={saveEntry}>
+        <Button block outline onClick={saveEntry}>
           Save
         </Button>
       </form>
