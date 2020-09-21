@@ -78,12 +78,13 @@ function Dashboard() {
         <Button flat info toggled={editMode} onClick={toggleEditMode}>
           <i className="fas fa-edit" />
         </Button>
-        <Button flat success onClick={() => setShowModal(true)}>
-          {editMode ? (
-            <i className="fas fa-times" />
-          ) : (
-            <i className="fas fa-plus" />
-          )}
+        <Button
+          flat
+          success
+          disabled={editMode}
+          onClick={() => setShowModal(true)}
+        >
+          <i className="fas fa-plus" />
         </Button>
       </ToolBar>
       <JournalList>{editMode ? getEditJournals() : getJournals()}</JournalList>
