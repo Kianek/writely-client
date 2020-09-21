@@ -26,19 +26,19 @@ function Settings() {
         </Modal>
       )}
       <ToolBar left>
-        <Button flat link to="/dashboard">
+        <Button outline link to="/dashboard">
           <i className="fas fa-arrow-left" /> Dashboard
         </Button>
       </ToolBar>
       <Panel wide>
-        <Button block flat link to="/change-password">
+        <Button block outline link to="/change-password">
           Change Password
         </Button>
-        <Button block flat onClick={downloadUserData}>
+        <Button block outline onClick={downloadUserData}>
           Download Account Data
         </Button>
         <HorizontalRule />
-        <Button block flat onClick={() => setShowModal(true)}>
+        <Button block outline onClick={() => setShowModal(true)}>
           Delete Account
         </Button>
       </Panel>
