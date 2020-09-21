@@ -33,7 +33,7 @@ function Entry({ entry }) {
       <div>
         <h4>{entry.title}</h4>
         <HorizontalRule />
-        <Paragraph small>Created At: {entry.createdAt}</Paragraph>
+        <Paragraph small>{entry.createdAt}</Paragraph>
       </div>
     </li>
   );
