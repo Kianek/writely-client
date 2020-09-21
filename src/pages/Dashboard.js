@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Button from '../components/Button';
 import JournalList from '../components/JournalList';
 import Journal from '../components/Journal';
+import EditJournal from '../components/EditJournal';
 import Modal from '../components/Modal';
 import TextInput from '../components/TextInput';
 import ToolBar from '../components/ToolBar';
@@ -27,6 +28,21 @@ function Dashboard() {
 
   function toggleEditMode() {
     setEditMode(!editMode);
+  }
+
+  function getEditJournals() {
+    return mockJournals.map((data) => (
+      <EditJournal
+        key={data.id}
+        journal={data}
+        deleteHandler={deleteJournal}
+        updateHandler={updateJournal}
+      />
+    ));
+  }
+
+  function getJournals() {
+    return mockJournals.map((data) => <Journal key={data.id} journal={data} />);
   }
 
   function addJournal() {
@@ -70,7 +86,7 @@ function Dashboard() {
           )}
         </Button>
       </ToolBar>
-      <JournalList>{editMode ? null : journals}</JournalList>
+      <JournalList>{editMode ? getEditJournals() : getJournals()}</JournalList>
     </div>
   );
 }
