@@ -7,9 +7,21 @@ export const entriesSlice = createSlice({
     select: (state, action) => {
       state.selectedEntry = state.entries.find(action.payload.id);
     },
-    add: (state, action) => {},
-    update: (state, action) => {},
-    remove: (state, action) => {},
+    add: (state, action) => {
+      state.entries.push(action.payload);
+    },
+    update: (state, action) => {
+      state.entries = state.entries.map((entry) => {
+        if (entry.id === action.payload.id) {
+          entry = action.payload;
+        }
+      });
+    },
+    remove: (state, action) => {
+      state.entries = state.entries.filter(
+        (entry) => entry.id !== action.payload
+      );
+    },
   },
 });
 
