@@ -2,7 +2,9 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import { Fragment, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOutAsync } from '../data/users/usersSlice';
 import ProfileButton from './ProfileButton';
 import Button from './Button';
 import Menu from './Menu';
@@ -21,6 +23,8 @@ const styles = (theme) => css`
 `;
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const toggleDropdown = () => setDropdownVisible(!dropdownVisible);
   const signedIn = useSelector((state) => state.users.signedIn);
@@ -41,6 +45,10 @@ function Navbar() {
     };
   });
 
+  function handleSignOut() {
+    dispatch(signOutAsync()).then(() => history.replace('/'));
+  }
+
   return (
     <nav css={styles}>
       <ul>
@@ -54,7 +62,7 @@ function Navbar() {
               <Button block flat link to="/settings" onClick={toggleDropdown}>
                 Settings
               </Button>
-              <Button block flat link to="/" onClick={toggleDropdown}>
+              <Button block flat link to="/" onClick={handleSignOut}>
                 Sign Out
               </Button>
             </Menu>
