@@ -2,6 +2,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import { Fragment, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import Button from './Button';
 import Menu from './Menu';
@@ -22,6 +23,7 @@ const styles = (theme) => css`
 function Navbar() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const toggleDropdown = () => setDropdownVisible(!dropdownVisible);
+  const signedIn = useSelector((state) => state.users.signedIn);
 
   useEffect(() => {
     const handler = (event) => {
@@ -45,7 +47,7 @@ function Navbar() {
         <Button branding flat link to="/">
           Writely
         </Button>
-        {true ? (
+        {signedIn ? (
           <Fragment>
             <ProfileButton toggled={dropdownVisible} onClick={toggleDropdown} />
             <Menu showMenu={dropdownVisible}>
