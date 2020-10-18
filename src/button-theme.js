@@ -28,11 +28,11 @@ function buttonTheme({ colors, container }) {
       boxShadow: 'none',
     },
     disabled: {
-      backgroundColor: colors.lightGray,
-      border: 'none',
-      color: colors.white,
+      backgroundColor: colors.white,
+      border: `solid 1px ${colors.lightGray}`,
+      color: colors.darkGray,
       '&:hover': {
-        color: colors.white,
+        backgroundColor: colors.white,
         cursor: 'not-allowed',
       },
     },
