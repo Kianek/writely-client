@@ -34,13 +34,6 @@ const buttonStyles = ({ button }) => css`
     ${button.danger}
   }
 
-  &.disabled,
-  &.disabled:hover {
-    ${button.disabled}
-    &:hover {
-    }
-  }
-
   &.large {
     ${button.large}
   }
@@ -51,6 +44,11 @@ const buttonStyles = ({ button }) => css`
 
   &.block {
     ${button.block}
+  }
+
+  &.disabled,
+  &.disabled:hover {
+    ${button.disabled}
   }
 `;
 
@@ -73,6 +71,7 @@ function Button({
   info,
   success,
   id,
+  loading,
 }) {
   const activeStyles = {
     branding,
@@ -89,6 +88,7 @@ function Button({
     success,
   };
   const classes = classNames(activeStyles);
+  const buttonContent = loading ? 'Loading...' : children;
 
   return link ? (
     <Link
@@ -98,19 +98,19 @@ function Button({
       onClick={onClick}
       data-testid="linkButton"
     >
-      {children}
+      {buttonContent}
     </Link>
   ) : (
     <button
       id={id ? id : null}
       type={submit ? submit : 'button'}
-      disabled={disabled ? true : false}
+      disabled={disabled || loading}
       css={buttonStyles}
       className={classes}
       onClick={onClick}
       data-testid="plainButton"
     >
-      {children}
+      {buttonContent}
     </button>
   );
 }
