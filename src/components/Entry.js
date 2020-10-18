@@ -33,7 +33,7 @@ function Entry({ entry }) {
       <div>
         <h4>{entry.title}</h4>
         <HorizontalRule />
-        <Paragraph small>{entry.createdAt}</Paragraph>
+        <Paragraph small>{entry.lastModified}</Paragraph>
       </div>
     </li>
   );
