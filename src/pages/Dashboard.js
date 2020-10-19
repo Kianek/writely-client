@@ -8,7 +8,8 @@ import EditJournal from '../components/EditJournal';
 import Modal from '../components/Modal';
 import TextInput from '../components/TextInput';
 import ToolBar from '../components/ToolBar';
-import mockJournals from '../data/mock-journals';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllAsync } from '../data/journals/journalsSlice';
 
 const dashboardStyles = css`
   border-radius: 3px;
@@ -19,19 +20,23 @@ const dashboardStyles = css`
 `;
 
 function Dashboard() {
+  const dispatch = useDispatch();
+  let user = useSelector((state) => state.users.user);
+  let userJournals = useSelector((state) => state.journals.journals);
   const [newJournalTitle, setNewJournalTitle] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [editMode, setEditMode] = useState(false);
-  const [journals, setJournals] = useState(
-    mockJournals.map((data) => <Journal key={data.id} journal={data} />)
-  );
+
+  useEffect(() => {
+    dispatch(getAllAsync(user.id));
+  }, [dispatch, user]);
 
   function toggleEditMode() {
     setEditMode(!editMode);
   }
 
   function getEditJournals() {
-    return mockJournals.map((data) => (
+    return userJournals.map((data) => (
       <EditJournal
         key={data.id}
         journal={data}
@@ -41,8 +46,12 @@ function Dashboard() {
     ));
   }
 
+  function getDefaultJournals() {
+    return userJournals.map((data) => <Journal key={data.id} journal={data} />);
+  }
+
   function getJournals() {
-    return mockJournals.map((data) => <Journal key={data.id} journal={data} />);
+    return editMode ? getEditJournals() : getDefaultJournals();
   }
 
   function addJournal() {
@@ -91,7 +100,7 @@ function Dashboard() {
           <i className="fas fa-plus" />
         </Button>
       </ToolBar>
-      <JournalList>{editMode ? getEditJournals() : getJournals()}</JournalList>
+      <JournalList>{getJournals()}</JournalList>
     </div>
   );
 }
