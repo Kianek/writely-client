@@ -1,14 +1,27 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { selectJournal } from '../data/journals/journalsSlice';
 
-const styles = (theme) => css`
-  background-color: ${theme.colors.shadow};
-  border-radius: 3px;
+const liStyles = css`
   margin: 1rem;
+`;
 
-  a {
-    text-decoration: none;
+const buttonStyles = (theme) => css`
+  margin: 1rem;
+  background-color: ${theme.colors.shadow};
+  border: none;
+  border-radius: 3px;
+  outline: none;
+
+  &:hover {
+    ${theme.colors.boxShadow}
+    cursor: pointer;
+  }
+
+  &:hover .journal-content {
+    transform: translateY(-3px);
   }
 
   .journal-content {
@@ -21,25 +34,24 @@ const styles = (theme) => css`
     height: 50px;
     width: 200px;
   }
-
-  &:hover {
-    ${theme.colors.boxShadow}
-    cursor: pointer;
-  }
-
-  &:hover .journal-content {
-    transform: translateY(-3px);
-  }
 `;
 
 function Journal({ journal }) {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const goToJournal = () => {
+    dispatch(selectJournal(journal));
+    history.push(`journal/${journal.id}`);
+  };
+
   return (
-    <li css={styles}>
-      <Link to={`/journal/${journal.id}`}>
+    <li css={liStyles}>
+      <button css={buttonStyles} onClick={goToJournal}>
         <div className="journal-content">
           <h4>{journal.title}</h4>
         </div>
-      </Link>
+      </button>
     </li>
   );
 }
