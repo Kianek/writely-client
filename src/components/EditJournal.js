@@ -49,7 +49,11 @@ function EditJournal({ journal, deleteHandler, modalHandler }) {
       <div className="journal-content" onClick={modalHandler}>
         <h4>
           {journal.title}{' '}
-          <i onClick={deleteHandler} css={timesBtn} className="fas fa-times" />
+          <i
+            onClick={() => deleteHandler(journal)}
+            css={timesBtn}
+            className="fas fa-times"
+          />
         </h4>
       </div>
     </li>
