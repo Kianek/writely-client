@@ -1,12 +1,29 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 
-const styles = (theme) => css`
+const containerStyles = (theme) => css`
   ${theme.colors.boxShadow}
   background-color: ${theme.colors.shadow};
   border-radius: 3px;
   margin: 1rem;
 
+  &:hover {
+    background-color: ${theme.colors.white};
+    box-shadow: none;
+    cursor: pointer;
+  }
+`;
+
+const innerContainerStyles = (theme) => css`
+  ${theme.flex.row}
+  transform: translateY(-3px);
+
+  &:hover {
+    transform: translateY(3px);
+  }
+`;
+
+const journalStyles = (theme) => css`
   a {
     text-decoration: none;
   }
@@ -17,44 +34,43 @@ const styles = (theme) => css`
     align-items: center;
     justify-content: center;
     border: solid 1px ${theme.colors.lightGray};
-    border-radius: 3px;
+    border-radius: 3px 0 0 3px;
     height: 50px;
     padding: 0.5rem;
-    transform: translateY(-3px);
     width: 200px;
-  }
-
-  &:hover {
-    background-color: ${theme.colors.white};
-    box-shadow: none;
-    cursor: pointer;
-    transform: translateY(3px);
   }
 `;
 
 const timesBtn = (theme) => css`
-  background-color: ${theme.colors.white};
+  background-color: rgba(${theme.colors.danger}, 0.3);
+  border: solid 1px ${theme.colors.lightGray};
+  border-left: none;
+  border-radius: 0 3px 3px 0;
   color: ${theme.colors.darkGray};
-  padding: 0.25rem;
+  width: 40px;
+  height: 50px;
 
   &:hover {
-    color: ${theme.colors.danger};
+    background-color: ${theme.colors.danger};
+    border: solid 1px ${theme.colors.danger};
+    border-left: none;
+    color: ${theme.colors.white};
     cursor: pointer;
   }
 `;
 
 function EditJournal({ journal, deleteHandler, modalHandler }) {
   return (
-    <li css={styles}>
-      <div className="journal-content" onClick={modalHandler}>
-        <h4>
-          {journal.title}{' '}
-          <i
-            onClick={() => deleteHandler(journal)}
-            css={timesBtn}
-            className="fas fa-times"
-          />
-        </h4>
+    <li css={containerStyles}>
+      <div css={innerContainerStyles}>
+        <div css={journalStyles}>
+          <div className="journal-content" onClick={modalHandler}>
+            <h4>{journal.title} </h4>
+          </div>
+        </div>
+        <button css={timesBtn} onClick={() => deleteHandler(journal)}>
+          <i className="fas fa-times" />
+        </button>
       </div>
     </li>
   );
