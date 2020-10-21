@@ -9,7 +9,13 @@ import Modal from '../components/Modal';
 import TextInput from '../components/TextInput';
 import ToolBar from '../components/ToolBar';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllAsync } from '../data/journals/journalsSlice';
+import {
+  getAllAsync,
+  createJournalAsync,
+  updateJournalAsync,
+  removeJournalAsync,
+  selectJournal,
+} from '../data/journals/journalsSlice';
 
 const dashboardStyles = css`
   border-radius: 3px;
@@ -23,6 +29,7 @@ function Dashboard() {
   const dispatch = useDispatch();
   let user = useSelector((state) => state.users.user);
   let userJournals = useSelector((state) => state.journals.journals);
+  let selectedJournal = useSelector((state) => state.journals.selectedJournal);
   const [newJournalTitle, setNewJournalTitle] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -30,6 +37,8 @@ function Dashboard() {
   useEffect(() => {
     dispatch(getAllAsync(user.id));
   }, [dispatch, user]);
+
+  const noJournalsExist = () => userJournals.length <= 0;
 
   function toggleEditMode() {
     setEditMode(!editMode);
@@ -40,8 +49,11 @@ function Dashboard() {
       <EditJournal
         key={data.id}
         journal={data}
+        modalHandler={() => {
+          setShowModal(true);
+          dispatch(selectJournal(data));
+        }}
         deleteHandler={deleteJournal}
-        modalHandler={() => setShowModal(true)}
       />
     ));
   }
@@ -51,12 +63,41 @@ function Dashboard() {
   }
 
   function getJournals() {
+    if (noJournalsExist()) {
+      return (
+        <div
+          css={(theme) => css`
+            color: ${theme.colors.darkGray};
+          `}
+        >
+          No journals yet. Try adding one!
+        </div>
+      );
+    }
+
     return editMode ? getEditJournals() : getDefaultJournals();
   }
 
   function addJournal() {
-    setShowModal(false);
-    setNewJournalTitle('');
+    dispatch(createJournalAsync({ userId: user.id, title: newJournalTitle }))
+      .then(() => {
+        closeModal();
+      })
+      .catch(() => console.log('unable to create journal'));
+  }
+
+  function updateJournal() {
+    dispatch(
+      updateJournalAsync({
+        userId: user.id,
+        title: newJournalTitle,
+        id: selectedJournal.id,
+      })
+    )
+      .then(() => {
+        closeModal();
+      })
+      .catch((err) => console.log(err));
   }
 
   function closeModal() {
@@ -64,12 +105,9 @@ function Dashboard() {
     setNewJournalTitle('');
   }
 
-  function updateJournal() {
-    setShowModal(false);
-    setNewJournalTitle('');
+  function deleteJournal(journal) {
+    dispatch(removeJournalAsync(journal));
   }
-
-  function deleteJournal() {}
 
   return (
     <div css={dashboardStyles} id="dashboard">
@@ -88,7 +126,13 @@ function Dashboard() {
         </Modal>
       )}
       <ToolBar right>
-        <Button flat info toggled={editMode} onClick={toggleEditMode}>
+        <Button
+          flat
+          info
+          toggled={editMode}
+          disabled={noJournalsExist()}
+          onClick={toggleEditMode}
+        >
           <i className="fas fa-edit" />
         </Button>
         <Button
