@@ -34,7 +34,6 @@ const theme = {
   button: {},
 };
 
-const buttonThemes = buttonTheme(theme);
-theme.button = buttonThemes;
+theme.button = buttonTheme(theme);
 
 export default theme;
