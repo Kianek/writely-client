@@ -31,6 +31,7 @@ const buttonStyles = (theme) => css`
     justify-content: center;
     border: solid 1px ${theme.colors.lightGray};
     border-radius: 3px;
+    font-size: 1rem;
     height: 50px;
     width: 200px;
   }
