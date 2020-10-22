@@ -36,7 +36,7 @@ const styles = (theme) => css`
   }
 `;
 
-function EntryView(props) {
+function EntryView({ journal, selectedEntry }) {
   const [title, setTitle] = useState('');
 
   function saveEntry(event) {
@@ -51,14 +51,16 @@ function EntryView(props) {
             <i className="fas fa-arrow-left" /> Dashboard
           </Button>
         </ToolBar>
-        <h3>{props.journal}</h3>
+        <h3>{journal.title}</h3>
         <TextInput
           block
           placeholder="Title"
           value={title}
           onChange={setTitle}
         />
-        <textarea placeholder="Tell me your deepest, darkest secrets.."></textarea>
+        <textarea placeholder="Tell me your deepest, darkest secrets..">
+          {selectedEntry}
+        </textarea>
         <Button block outline onClick={saveEntry}>
           Save
         </Button>
