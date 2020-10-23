@@ -4,6 +4,7 @@ import { useState } from 'react';
 import TextInput from './TextInput';
 import Button from './Button';
 import ToolBar from './ToolBar';
+import { useSelector } from 'react-redux';
 
 const styles = (theme) => css`
   ${theme.flex.row}
@@ -36,12 +37,18 @@ const styles = (theme) => css`
   }
 `;
 
-function EntryView({ journal, selectedEntry }) {
-  const [title, setTitle] = useState('');
+function EntryView({ journal, entries }) {
+  const entry = useSelector((state) => state.entries.selectedEntry);
+  const [title, setTitle] = useState(entry.title);
+  const [body, setBody] = useState(entry.body);
 
   function saveEntry(event) {
     event.preventDefault();
   }
+
+  const handleChange = (setter) => (event) => {
+    setter(event.target.value);
+  };
 
   return (
     <div css={styles} id="entry-view">
@@ -56,11 +63,13 @@ function EntryView({ journal, selectedEntry }) {
           block
           placeholder="Title"
           value={title}
-          onChange={setTitle}
+          onChange={handleChange(setTitle)}
         />
-        <textarea placeholder="Tell me your deepest, darkest secrets..">
-          {selectedEntry}
-        </textarea>
+        <textarea
+          onChange={handleChange(setBody)}
+          value={body}
+          placeholder="Tell me your deepest, darkest secrets.."
+        ></textarea>
         <Button block outline onClick={saveEntry}>
           Save
         </Button>
