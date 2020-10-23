@@ -2,6 +2,8 @@
 import { jsx, css } from '@emotion/core';
 import Paragraph from './Paragraph';
 import HorizontalRule from './HorizontalRule';
+import { useDispatch } from 'react-redux';
+import { selectEntry } from '../data/entries/entriesSlice';
 
 const styles = (theme) => css`
   ${theme.flex.column}
@@ -24,12 +26,10 @@ const styles = (theme) => css`
 `;
 
 function Entry({ entry }) {
-  function selectEntry() {
-    console.log(`You've touched entry no. ${entry.id}!`);
-  }
+  const dispatch = useDispatch();
 
   return (
-    <li css={styles} id="entry" onClick={selectEntry}>
+    <li css={styles} id="entry" onClick={() => dispatch(selectEntry(entry))}>
       <div>
         <h4>{entry.title}</h4>
         <HorizontalRule />
