@@ -1,10 +1,8 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { useState } from 'react';
-import Entry from '../components/Entry';
 import EntryList from '../components/EntryList';
 import EntryView from '../components/EntryView';
-import mockEntries from '../data/mock-entries';
+import { useSelector } from 'react-redux';
 
 const styles = (theme) => css`
   ${theme.flex.row}
@@ -16,16 +14,15 @@ const styles = (theme) => css`
 `;
 
 function JournalView() {
-  const [entries, setEntries] = useState(
-    mockEntries.map((entry) => <Entry key={entry.id} entry={entry} />)
+  const selectedJournal = useSelector(
+    (state) => state.journals.selectedJournal
   );
-
-  function loadEntry() {}
+  const entries = useSelector((state) => state.entries.entries);
 
   return (
     <div css={styles}>
-      <EntryList>{entries}</EntryList>
-      <EntryView journal="Fancy Journal" />
+      <EntryList entries={entries} />
+      <EntryView journal={selectedJournal} />
     </div>
   );
 }
