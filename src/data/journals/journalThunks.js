@@ -1,9 +1,11 @@
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { loadEntries } from '../entries/entriesSlice';
 import axios from '../../config';
 
-export const selectJournal = createAction(
+export const selectJournal = createAsyncThunk(
   'journals/selectJournal',
-  (journal) => {
+  (journal, { dispatch }) => {
+    dispatch(loadEntries(journal));
     return { payload: journal };
   }
 );
