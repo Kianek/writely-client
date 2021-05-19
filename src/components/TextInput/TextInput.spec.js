@@ -44,4 +44,13 @@ describe('TextInput', () => {
 
     expect(screen.getByTestId('errors')).toBeInTheDocument();
   });
+
+  test('can set input type', () => {
+    render(<TextInput password placeholder="Password" value="" />);
+
+    expect(screen.getByPlaceholderText('Password')).toHaveAttribute(
+      'type',
+      'password'
+    );
+  });
 });
