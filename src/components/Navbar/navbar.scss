@@ -1,8 +1,36 @@
 @import '../colors.scss';
+@import '../layout.scss';
 
-.branding {
-  color: $info;
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.75em;
-  text-decoration: none;
+header {
+  background-color: $primary;
+  width: 100%;
+
+  nav {
+    @extend %row;
+    height: 50px;
+    margin: auto;
+    width: 80%;
+    margin: auto;
+
+    .branding {
+      color: $secondary;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.75em;
+      margin-right: auto;
+      text-decoration: none;
+    }
+
+    .nav-link {
+      border: 1px solid $primary;
+      border-radius: 3px;
+      color: $secondary;
+      padding: 0.5em;
+      text-decoration: none;
+      transition: 0.3s;
+
+      &:hover {
+        border: 1px solid $secondary;
+      }
+    }
+  }
 }
