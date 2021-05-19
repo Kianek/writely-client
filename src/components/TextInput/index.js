@@ -1,13 +1,20 @@
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
+import { capitalize } from '../../utils/utils';
 import './text-input.scss';
 
-function TextInput({ onChange, placeholder, validators, value }) {
+function TextInput({ onChange, placeholder, password, validators, value }) {
   const [errors, setErrors] = useState('');
+  const [hasFocus, setHasFocus] = useState(false);
 
   const setState = (event) => {
     onChange(event.target.value);
     validate();
+  };
+
+  const setFocus = (boolValue) => {
+    setHasFocus(boolValue);
   };
 
   const validate = () => {
@@ -24,25 +31,41 @@ function TextInput({ onChange, placeholder, validators, value }) {
       }
     });
 
-    setErrors(errs.join(', '));
+    setErrors(capitalize(errs.join(', ')));
   };
 
   return (
-    <Fragment>
-      <input
-        type="text"
-        onChange={setState}
-        placeholder={placeholder}
-        value={value}
-      />
-      {errors.length > 0 && <p data-testid="errors">{errors}</p>}
-    </Fragment>
+    <div className="text-input">
+      <div className="input-group">
+        <input
+          type={password ? 'password' : 'text'}
+          onChange={setState}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          placeholder={placeholder}
+          value={value}
+        />
+        <div
+          className={classNames('bottom-border', {
+            active: hasFocus,
+            inactive: !hasFocus,
+            errors: errors && errors.length > 0,
+          })}
+        ></div>
+      </div>
+      {errors && errors.length > 0 && (
+        <p className="errors" data-testid="errors">
+          {errors}
+        </p>
+      )}
+    </div>
   );
 }
 
 TextInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
+  password: PropTypes.bool,
   validators: PropTypes.arrayOf(PropTypes.func),
   value: PropTypes.string.isRequired,
 };
