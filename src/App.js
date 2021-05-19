@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.scss';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import LoginPortal from './pages/LoginPortal';
@@ -11,7 +10,7 @@ import Settings from './pages/Settings';
 function App() {
   return (
     <Router>
-      <div className="App" data-testid="App">
+      <div data-testid="App">
         <Navbar />
         <Switch>
           <Route exact path="/">
