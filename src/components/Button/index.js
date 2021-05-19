@@ -27,12 +27,17 @@ function Button({
   });
 
   if (submit) {
+    const onSubmit = (event) => {
+      event.preventDefault();
+      onClick();
+    };
+
     return (
       <input
         className={classes}
         type="submit"
         disabled={disabled}
-        onClick={onClick}
+        onClick={onSubmit}
         value={children}
       />
     );
