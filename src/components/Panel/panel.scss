@@ -1,0 +1,12 @@
+@import '../colors.scss';
+@import '../layout.scss';
+
+.panel {
+  @extend %box-shadow;
+  @extend %column;
+
+  border-radius: 3px;
+  margin: auto;
+  padding: 0.5em;
+  width: 70%;
+}

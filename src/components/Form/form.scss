@@ -1,0 +1,11 @@
+@import '../layout.scss';
+@import '../colors.scss';
+
+form {
+  @extend %column;
+
+  border-radius: 3px;
+  margin: auto;
+  padding: 0.5em;
+  width: 70%;
+}

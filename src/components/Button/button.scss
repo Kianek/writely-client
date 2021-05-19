@@ -1,0 +1,77 @@
+@import '../colors.scss';
+
+@mixin color-btn($color) {
+  background-color: $color;
+  border: 1px solid darken($color, 20%);
+  color: $white;
+  transform: none;
+
+  &:hover {
+    background-color: darken($color, 10%);
+    box-shadow: none;
+  }
+}
+
+.btn {
+  display: inline-block;
+  background-color: $white;
+  border: 1px solid $white;
+  border-bottom: 1px solid $light-gray;
+  border-radius: 3px;
+  color: $gray;
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  transition: 0.2s;
+
+  &:hover {
+    @extend %box-shadow;
+    border: 1px solid $white;
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
+
+  &.block {
+    display: block;
+    width: 100%;
+  }
+
+  &.danger {
+    @include color-btn($danger);
+  }
+
+  &.disabled {
+    background-color: $gray;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  &.info {
+    @include color-btn($info);
+  }
+
+  &.outline {
+    background-color: $white;
+    border: 1px solid $secondary;
+  }
+
+  &.raised {
+    @extend %box-shadow;
+    background-color: $white;
+    border: 1px solid $white;
+    color: $black;
+    transition: 0.2s;
+    transform: translateY(0);
+
+    &:hover {
+      border: 1px solid $light-gray;
+      box-shadow: none;
+      transform: translateY(2px);
+    }
+  }
+
+  &.success {
+    @include color-btn($success);
+  }
+}

@@ -1,0 +1,14 @@
+/* Colors */
+$primary: #b3d7df;
+$secondary: #05445e;
+$success: #8fdd6b;
+$info: #4375fc;
+$danger: #f86a6a;
+$white: #fff;
+$black: #000;
+$gray: #818181;
+$light-gray: #e9e7e7;
+
+%box-shadow {
+  box-shadow: 0 4px 6px 1px rgba($black, 0.4);
+}
