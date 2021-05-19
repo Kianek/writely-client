@@ -3,14 +3,16 @@ import './navbar.scss';
 
 function Navbar() {
   return (
-    <nav role="navigation">
-      <div>
+    <header>
+      <nav role="navigation">
         <Link className="branding" to="/">
           Writely
         </Link>
-        <Link to="/register">Register</Link>
-      </div>
-    </nav>
+        <Link className="nav-link" to="/register">
+          Register
+        </Link>
+      </nav>
+    </header>
   );
 }
 
