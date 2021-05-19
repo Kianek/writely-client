@@ -42,6 +42,20 @@ describe('Button', () => {
     expect(btn).toHaveAttribute('type', 'submit');
   });
 
+  test('invokes callback when used as type submit', () => {
+    let submitEvent = jest.fn();
+    render(
+      <Button submit onClick={submitEvent}>
+        Submit
+      </Button>
+    );
+
+    const btn = screen.getByText('Submit');
+    userEvent.click(btn);
+
+    expect(submitEvent).toBeCalled();
+  });
+
   test('should be disabled', () => {
     render(<Button disabled>Click me</Button>);
 
