@@ -7,4 +7,10 @@ describe('Panel', () => {
 
     expect(screen.getByTestId('panel')).toBeInTheDocument();
   });
+
+  test('renders wide panel', () => {
+    render(<Panel wide>some text</Panel>);
+
+    expect(screen.getByTestId('panel')).toHaveClass('wide');
+  });
 });
