@@ -2,10 +2,13 @@ import PropTypes from 'prop-types';
 import './text-input.scss';
 
 function TextInput({ onChange, placeholder, value }) {
+  const setState = (event) => {
+    onChange(event.target.value);
+  };
   return (
     <input
       type="text"
-      onChange={onChange}
+      onChange={setState}
       placeholder={placeholder}
       value={value}
     />
