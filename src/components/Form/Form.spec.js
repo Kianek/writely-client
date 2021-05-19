@@ -10,18 +10,4 @@ describe('Form', () => {
 
     expect(screen.getByText(/form/)).toBeInTheDocument();
   });
-
-  test('can submit', () => {
-    const onSubmit = jest.fn();
-    render(
-      <Form onSubmit={onSubmit}>
-        <Button submit>Submit</Button>
-      </Form>
-    );
-
-    const btn = screen.getByText('Submit');
-    userEvent.click(btn);
-
-    expect(onSubmit).toBeCalled();
-  });
 });
