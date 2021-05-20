@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import TextInput from '.';
 import userEvent from '@testing-library/user-event';
-import { isEmail } from '../../validators/validators';
+import { isEmail } from '../../validators';
 
 describe('TextInput', () => {
   test('renders successfully', () => {

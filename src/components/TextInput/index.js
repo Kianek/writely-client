@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { capitalize } from '../../utils/utils';
+import { capitalize } from '../../utils';
 import debounce from 'lodash/debounce';
 import './text-input.scss';
 

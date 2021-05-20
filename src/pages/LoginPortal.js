@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { isEmail, isEmpty } from '../validators/validators';
+import { isEmail, isEmpty } from '../validators';
 import Button from '../components/Button';
 import Form from '../components/Form';
 import Panel from '../components/Panel';

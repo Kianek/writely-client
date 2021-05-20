@@ -1,4 +1,4 @@
-import { minLength, isEmpty, isEmail, isStrongPassword } from './validators';
+import { minLength, isEmpty, isEmail, isStrongPassword } from '.';
 
 describe('validators', () => {
   describe('minLength', () => {
