@@ -14,7 +14,7 @@ function TextInput({
   value,
 }) {
   const [errors, setErrors] = useState('');
-  const [hasFocus, setHasFocus] = useState(false);
+  const [hasFocus, setHasFocus] = useState(null);
   const [valid, setValid] = useState(null);
 
   const setFocus = (boolValue) => {
@@ -51,7 +51,6 @@ function TextInput({
 
   const setState = (event) => {
     onChange(event.target.value);
-    validate();
   };
 
   return (
@@ -60,6 +59,7 @@ function TextInput({
         <input
           type={password ? 'password' : 'text'}
           onChange={setState}
+          onKeyUp={validate}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           placeholder={placeholder}
@@ -69,7 +69,7 @@ function TextInput({
           data-testid="err"
           className={classNames('bottom-border', {
             active: hasFocus,
-            inactive: !hasFocus,
+            inactive: hasFocus === false && hasFocus !== null,
             errors: errors && errors.length > 0,
             success: valid,
           })}
