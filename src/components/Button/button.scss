@@ -40,10 +40,14 @@
   }
 
   &.disabled {
-    background-color: $gray;
+    background-color: $light-gray;
 
     &:hover {
       cursor: not-allowed;
+      border-bottom: 1px solid $light-gray;
+      box-shadow: none;
+      cursor: pointer;
+      transform: none;
     }
   }
 
