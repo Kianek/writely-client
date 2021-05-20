@@ -2,22 +2,18 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { capitalize } from '../../utils/utils';
+import debounce from 'lodash/debounce';
 import './text-input.scss';
 
 function TextInput({ onChange, placeholder, password, validators, value }) {
   const [errors, setErrors] = useState('');
   const [hasFocus, setHasFocus] = useState(false);
 
-  const setState = (event) => {
-    onChange(event.target.value);
-    validate();
-  };
-
   const setFocus = (boolValue) => {
     setHasFocus(boolValue);
   };
 
-  const validate = () => {
+  const validateInput = () => {
     if (!validators) {
       return;
     }
@@ -32,6 +28,13 @@ function TextInput({ onChange, placeholder, password, validators, value }) {
     });
 
     setErrors(capitalize(errs.join(', ')));
+  };
+
+  const validate = debounce(validateInput, 750);
+
+  const setState = (event) => {
+    onChange(event.target.value);
+    validate();
   };
 
   return (
