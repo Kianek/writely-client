@@ -47,7 +47,7 @@ function TextInput({
     }
   };
 
-  const validate = debounce(validateInput, 750);
+  const validate = debounce(validateInput, 500);
 
   const setState = (event) => {
     onChange(event.target.value);
