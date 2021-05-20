@@ -1,4 +1,10 @@
-import { minLength, isEmpty, isEmail, isStrongPassword } from '.';
+import {
+  minLength,
+  isEmpty,
+  isEmail,
+  isStrongPassword,
+  passwordsMatch,
+} from '.';
 
 describe('validators', () => {
   describe('minLength', () => {
@@ -43,6 +49,15 @@ describe('validators', () => {
 
     test('password is weak', () => {
       expect(typeof isStrongPassword('weakpw')).toBe('string');
+    });
+  });
+
+  describe('passwordsMatch', () => {
+    test('returns true when passwords match', () => {
+      let pw1 = 'Password123!';
+      let pw2 = 'Password123!';
+
+      expect(passwordsMatch(pw1)(pw2)).toBeTruthy();
     });
   });
 });
