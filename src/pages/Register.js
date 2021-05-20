@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '../components/Button';
 import Form from '../components/Form';
 import Panel from '../components/Panel';
+import PasswordGroup from '../components/PasswordGroup';
 import Rule from '../components/Rule';
 import TextInput from '../components/TextInput';
 
@@ -11,8 +12,13 @@ function Register(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordErrors, setPasswordErrors] = useState([]);
 
   const onSubmit = () => {
+    if (passwordErrors.length > 0) {
+      return;
+    }
+
     console.log('submit');
   };
 
@@ -33,19 +39,20 @@ function Register(props) {
           />
           <TextInput placeholder="Email" onChange={setEmail} value={email} />
           <Rule />
-          <TextInput
-            password
-            placeholder="Password"
-            onChange={setPassword}
-            value={password}
+          <PasswordGroup
+            errors={{ errors: passwordErrors, handler: setPasswordErrors }}
+            password={{ text: password, handler: setPassword }}
+            confirmPassword={{
+              text: confirmPassword,
+              handler: setConfirmPassword,
+            }}
           />
-          <TextInput
-            password
-            placeholder="Confirm Password"
-            onChange={setConfirmPassword}
-            value={confirmPassword}
-          />
-          <Button block submit onClick={onSubmit}>
+          <Button
+            block
+            submit
+            disabled={passwordErrors.length > 0}
+            onClick={onSubmit}
+          >
             Create
           </Button>
         </Form>
