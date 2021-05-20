@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import TextInput from '../TextInput';
-import {} from '../../validators';
+import { minLength, isStrongPassword, passwordsMatch } from '../../validators';
 
 import './password-group.scss';
 
@@ -23,14 +23,18 @@ function PasswordGroup({ errors, password, confirmPassword }) {
       </p>
       <TextInput
         password
+        errorHandler={errors.handler}
         placeholder="Password"
         onChange={password.handler}
+        validators={[minLength(8), isStrongPassword]}
         value={password.text}
       />
       <TextInput
         password
+        errorHandler={errors.handler}
         placeholder="Confirm Password"
         onChange={confirmPassword.handler}
+        validators={[passwordsMatch(password.text)]}
         value={confirmPassword.text}
       />
     </div>
