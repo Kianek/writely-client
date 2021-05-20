@@ -40,9 +40,32 @@ describe('TextInput', () => {
       />
     );
 
-    userEvent.type(screen.getByPlaceholderText('Email'), 'jim@someplace');
+    const element = screen.getByPlaceholderText('Email');
+    userEvent.type(element, 'jim@someplace');
 
-    expect(screen.getByTestId('errors')).toBeInTheDocument();
+    expect(element).toBeInTheDocument();
+  });
+
+  test('adds success style to bottom border when input is valid', () => {
+    let email = '';
+    let eventHandler = jest.fn((value) => {
+      email += value;
+    });
+    render(
+      <TextInput
+        placeholder="Email"
+        onChange={eventHandler}
+        value={email}
+        validators={[isEmail]}
+      />
+    );
+
+    const element = screen.getByPlaceholderText('Email');
+    userEvent.type(element, 'jim@gmail.com', { delay: 1000 }).then(() => {
+      const bottomBorder = screen.getByTestId('err');
+
+      expect(bottomBorder).toHaveClass('success');
+    });
   });
 
   test('can set input type', () => {
