@@ -12,3 +12,7 @@ export const isEmail = (val) =>
 
 export const isStrongPassword = (val) =>
   (!!val && validator.isStrongPassword(val, {})) || 'Weak password';
+
+export const passwordsMatch = (val1) => (val2) => {
+  return (!!val1 && !!val2 && val1 === val2) || 'passwords must match';
+};
