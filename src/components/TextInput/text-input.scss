@@ -62,5 +62,9 @@
     &.errors {
       border-bottom: 2px solid $danger;
     }
+
+    &.success {
+      border-bottom: 2px solid $success;
+    }
   }
 }
