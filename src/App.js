@@ -4,10 +4,11 @@ import Navbar from './components/Navbar';
 import LoginPortal from './pages/LoginPortal';
 import Dashboard from './pages/Dashboard';
 import JournalView from './pages/JournalView';
-import Registration from './pages/Registration';
+import Register from './pages/Register';
 import Settings from './pages/Settings';
 import Page from './components/Page';
 import './App.scss';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   return (
@@ -26,7 +27,10 @@ function App() {
               <JournalView />
             </Route>
             <Route path="/register">
-              <Registration />
+              <Register />
+            </Route>
+            <Route path="/reset-password">
+              <ResetPassword />
             </Route>
             <Route path="/settings">
               <Settings />
