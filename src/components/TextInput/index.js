@@ -5,9 +5,17 @@ import { capitalize } from '../../utils/utils';
 import debounce from 'lodash/debounce';
 import './text-input.scss';
 
-function TextInput({ onChange, placeholder, password, validators, value }) {
+function TextInput({
+  errorHandler,
+  onChange,
+  placeholder,
+  password,
+  validators,
+  value,
+}) {
   const [errors, setErrors] = useState('');
   const [hasFocus, setHasFocus] = useState(false);
+  const [valid, setValid] = useState(null);
 
   const setFocus = (boolValue) => {
     setHasFocus(boolValue);
@@ -22,12 +30,21 @@ function TextInput({ onChange, placeholder, password, validators, value }) {
     validators.forEach((validator) => {
       let result = validator(value);
       if (typeof result === 'string') {
-        console.log(typeof result);
         errs.push(result);
       }
     });
 
-    setErrors(capitalize(errs.join(', ')));
+    if (errorHandler) {
+      errorHandler(errs);
+    }
+
+    if (errs.length === 0) {
+      setValid(true);
+      setErrors('');
+    } else {
+      setValid(false);
+      setErrors(capitalize(errs.join(', ')));
+    }
   };
 
   const validate = debounce(validateInput, 750);
@@ -49,23 +66,22 @@ function TextInput({ onChange, placeholder, password, validators, value }) {
           value={value}
         />
         <div
+          data-testid="err"
           className={classNames('bottom-border', {
             active: hasFocus,
             inactive: !hasFocus,
             errors: errors && errors.length > 0,
+            success: valid,
           })}
         ></div>
       </div>
-      {errors && errors.length > 0 && (
-        <p className="errors" data-testid="errors">
-          {errors}
-        </p>
-      )}
+      {errors && errors.length > 0 && <p className="errors">{errors}</p>}
     </div>
   );
 }
 
 TextInput.propTypes = {
+  errorHandler: PropTypes.func,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   password: PropTypes.bool,
