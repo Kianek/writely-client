@@ -1,16 +1,34 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Menu from '../Menu';
+import MenuIcon from '../MenuIcon';
 import './navbar.scss';
+import useOutsideClick from '../../hooks/useOutsideClick';
 
 function Navbar() {
+  let loggedIn = true;
+  const [active, setActive] = useState(false);
+  useOutsideClick(() => setActive(false));
+
   return (
     <header>
       <nav role="navigation">
         <Link className="branding" to="/">
           Writely
         </Link>
-        <Link className="nav-link" to="/register">
-          Register
-        </Link>
+        {loggedIn ? (
+          <div id="dropdown">
+            <MenuIcon
+              onClick={() => setActive(!active)}
+              menuActivated={active}
+            />
+            <Menu onClickOutside={() => setActive(false)} isVisible={active} />
+          </div>
+        ) : (
+          <Link className="nav-link" to="/register">
+            Register
+          </Link>
+        )}
       </nav>
     </header>
   );
