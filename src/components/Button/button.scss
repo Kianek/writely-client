@@ -24,7 +24,7 @@
   transition: 0.2s;
 
   &:hover {
-    @extend %box-shadow;
+    @include box-shadow;
     border: 1px solid $white;
     cursor: pointer;
     transform: translateY(-2px);
@@ -61,7 +61,7 @@
   }
 
   &.raised {
-    @extend %box-shadow;
+    @include box-shadow;
     background-color: $white;
     border: 1px solid $white;
     color: $black;

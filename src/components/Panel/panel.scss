@@ -2,7 +2,7 @@
 @import '../layout.scss';
 
 .panel {
-  @extend %box-shadow;
+  @include box-shadow;
   @extend %column;
 
   border-radius: 3px;
