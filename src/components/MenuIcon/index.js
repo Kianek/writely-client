@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import './menu-icon.scss';
+import classNames from 'classnames';
 
-function MenuIcon({ menuActivated }) {
+function MenuIcon({ onClick, menuActivated }) {
   return (
-    <div data-testid="menu-icon">
-      <i className={classnames('fas fa-user', { open: menuActivated })}></i>
-    </div>
+    <button
+      className={classNames('menu-icon', { active: menuActivated })}
+      onClick={onClick}
+      data-testid="menu-icon"
+    >
+      <i className="fas fa-user"></i>
+    </button>
   );
 }
 
 MenuIcon.propTypes = {
-  menuActivated: PropTypes.bool.isRequired,
+  menuActivated: PropTypes.bool,
 };
 
 export default MenuIcon;
