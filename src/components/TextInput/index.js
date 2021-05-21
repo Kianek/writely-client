@@ -74,8 +74,8 @@ function TextInput({
             success: valid,
           })}
         ></div>
+        {errors && errors.length > 0 && <p className="errors">{errors}</p>}
       </div>
-      {errors && errors.length > 0 && <p className="errors">{errors}</p>}
     </div>
   );
 }
