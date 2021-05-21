@@ -37,6 +37,7 @@
   z-index: 100;
 
   &.active {
+    @extend %box-shadow;
     display: flex;
     animation-name: fade-in;
     animation-duration: 0.2s;
@@ -59,6 +60,7 @@
     @extend %column;
     margin: auto;
     justify-content: space-between;
+    overflow: hidden;
 
     .link {
       background-color: $primary;
