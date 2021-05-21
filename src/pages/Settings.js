@@ -1,4 +1,4 @@
-function Settings(props) {
+function Settings() {
   return <div>Settings</div>;
 }
 

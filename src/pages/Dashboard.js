@@ -1,4 +1,4 @@
-function Dashboard(props) {
+function Dashboard() {
   return <div>Dashboard</div>;
 }
 

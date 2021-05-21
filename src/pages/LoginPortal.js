@@ -8,7 +8,7 @@ import Rule from '../components/Rule';
 import NavLink from '../components/NavLink';
 import { useHistory } from 'react-router';
 
-function LoginPortal(props) {
+function LoginPortal() {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

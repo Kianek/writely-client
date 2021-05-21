@@ -6,7 +6,7 @@ import PasswordGroup from '../components/PasswordGroup';
 import Rule from '../components/Rule';
 import TextInput from '../components/TextInput';
 
-function Register(props) {
+function Register() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
