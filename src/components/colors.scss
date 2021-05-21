@@ -9,6 +9,6 @@ $black: #000;
 $gray: #818181;
 $light-gray: #e9e7e7;
 
-%box-shadow {
-  box-shadow: 0 4px 6px 1px rgba($black, 0.4);
+@mixin box-shadow($x: 0, $y: 6px, $blur: 6px, $spread: 1px, $color: $black) {
+  box-shadow: $x $y $blur $spread rgba($color, 0.4);
 }
