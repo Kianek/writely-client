@@ -32,5 +32,9 @@ header {
         border: 1px solid $secondary;
       }
     }
+
+    #dropdown {
+      position: relative;
+    }
   }
 }
