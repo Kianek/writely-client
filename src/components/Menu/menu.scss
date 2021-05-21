@@ -1,51 +1,33 @@
 @import '../colors.scss';
 @import '../layout.scss';
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-}
-
 #menu {
   background-color: $primary;
   border-radius: 5px;
-  display: none;
+  visibility: none;
   position: absolute;
   top: 150%;
   right: 0;
   height: 200px;
   width: 200px;
   z-index: 100;
+  transform: translateY(-15px);
 
   &.active {
-    @extend %box-shadow;
+    @include box-shadow($y: 3px, $spread: 1px, $blur: 4px);
     display: flex;
-    animation-name: fade-in;
-    animation-duration: 0.2s;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.2s, opacity 0.2s linear;
   }
 
   &.inactive {
-    animation-name: fade-out;
-    animation-duration: 0.2s;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: visibility 0.2s, transform 0.2s, opacity 0.2s linear;
   }
 
   .arrow {
