@@ -1,15 +1,19 @@
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './menu.scss';
 import classNames from 'classnames';
+import './menu.scss';
 
 function Menu({ onClickOutside, isVisible }) {
   const history = useHistory();
+  const links = [
+    { url: '/settings', text: 'Settings' },
+    { url: '/', text: 'Sign Out' },
+  ];
 
-  function signOut() {
+  const navigateTo = (link) => () => {
     onClickOutside();
-    history.replace('/');
-  }
+    history.push(link);
+  };
 
   return (
     <div
@@ -22,12 +26,11 @@ function Menu({ onClickOutside, isVisible }) {
     >
       <div className="menu-content">
         <i className="arrow fas fa-sort-up"></i>
-        <Link className="link" to="/settings">
-          <div className="link-content">Settings</div>
-        </Link>
-        <button className="link" onClick={signOut}>
-          <div className="link-content">Sign Out</div>
-        </button>
+        {links.map((link) => (
+          <button className="link" onClick={navigateTo(link.url)}>
+            <div className="link-content">{link.text}</div>
+          </button>
+        ))}
       </div>
     </div>
   );
