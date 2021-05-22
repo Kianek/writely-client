@@ -5,6 +5,8 @@ import Panel from '../components/Panel';
 import PasswordGroup from '../components/PasswordGroup';
 import Rule from '../components/Rule';
 import TextInput from '../components/TextInput';
+import ToolBar from '../components/ToolBar';
+import useNavigateTo from '../hooks/useNavigateTo';
 
 function Register() {
   const [firstName, setFirstName] = useState('');
@@ -25,8 +27,13 @@ function Register() {
   return (
     <main>
       <Panel>
+        <ToolBar left>
+          <Button info onClick={useNavigateTo('/')}>
+            Back
+          </Button>
+        </ToolBar>
         <h1>Create Account</h1>
-        <Form>
+        <Form onSubmit={onSubmit}>
           <TextInput
             placeholder="First Name"
             onChange={setFirstName}
@@ -47,12 +54,7 @@ function Register() {
               handler: setConfirmPassword,
             }}
           />
-          <Button
-            block
-            submit
-            disabled={passwordErrors.length > 0}
-            onClick={onSubmit}
-          >
+          <Button block submit disabled={passwordErrors.length > 0}>
             Create
           </Button>
         </Form>
