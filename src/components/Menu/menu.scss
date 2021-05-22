@@ -1,6 +1,8 @@
 @import '../colors.scss';
 @import '../layout.scss';
 
+$rate: 0.15s;
+
 #menu {
   background-color: $primary;
   border-radius: 5px;
@@ -19,7 +21,7 @@
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
-    transition: transform 0.2s, opacity 0.2s linear;
+    transition: transform $rate, opacity $rate linear;
   }
 
   &.inactive {
@@ -27,7 +29,7 @@
     visibility: hidden;
     opacity: 0;
     transform: translateY(-15px);
-    transition: visibility 0.2s, transform 0.2s, opacity 0.2s linear;
+    transition: visibility $rate, transform $rate, opacity $rate linear;
   }
 
   .arrow {
