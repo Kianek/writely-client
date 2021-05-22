@@ -12,4 +12,16 @@ describe('ToolBar', () => {
 
     expect(screen.getByTestId('toolbar')).toBeInTheDocument();
   });
+
+  test('can justify left', () => {
+    render(<ToolBar left>Blah</ToolBar>);
+
+    expect(screen.getByTestId('toolbar')).toHaveClass('left');
+  });
+
+  test('can justify right', () => {
+    render(<ToolBar right>Blah</ToolBar>);
+
+    expect(screen.getByTestId('toolbar')).toHaveClass('right');
+  });
 });
