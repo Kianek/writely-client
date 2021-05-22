@@ -51,6 +51,19 @@
     }
   }
 
+  &.flat {
+    border: 1px solid $white;
+    background-color: rgba($light-gray, 0.5);
+
+    &:hover {
+      background-color: $white;
+      border: 1px solid $light-gray;
+      box-shadow: none;
+      transform: none;
+      // border: 1px solid $light-gray;
+    }
+  }
+
   &.info {
     @include color-btn($info);
   }
