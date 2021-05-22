@@ -1,0 +1,11 @@
+@import '../colors.scss';
+
+.list {
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  height: 400px;
+  list-style-type: none;
+  overflow-y: auto;
+  padding: 0;
+  width: 300px;
+}
