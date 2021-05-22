@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { capitalize } from '../../utils';
+import { capitalize, invokeSequence } from '../../utils';
 import debounce from 'lodash/debounce';
 import './text-input.scss';
 
@@ -26,12 +26,9 @@ function TextInput({
       return;
     }
 
-    let errs = [];
-    validators.forEach((validator) => {
-      let result = validator(value);
-      if (typeof result === 'string') {
-        errs.push(result);
-      }
+    let errs = invokeSequence(validators, {
+      returnValues: true,
+      filter: 'string',
     });
 
     if (errorHandler) {
