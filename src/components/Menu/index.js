@@ -6,7 +6,7 @@ import './menu.scss';
 function Menu({ onClickOutside, isVisible }) {
   const history = useHistory();
   const links = [
-    { id: 1, url: '/settings', text: 'Settings' },
+    { id: 1, url: '/profile', text: 'Profile' },
     { id: 2, url: '/', text: 'Sign Out' },
   ];
 
