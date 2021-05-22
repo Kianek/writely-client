@@ -1,4 +1,4 @@
-import { capitalize } from '.';
+import { capitalize, invokeSequence } from '.';
 
 describe('utils', () => {
   describe('capitalize', () => {
@@ -8,6 +8,56 @@ describe('utils', () => {
 
     test('if null, empty, or not a string, does nothing', () => {
       expect(capitalize('')).toBeUndefined();
+    });
+  });
+
+  describe('invokeSequence', () => {
+    test('calls an array of functions exactly once each', () => {
+      let funcs = [];
+      for (let i = 0; i < 3; i++) {
+        funcs.push(jest.fn());
+      }
+
+      invokeSequence(funcs);
+
+      funcs.forEach((func) => {
+        expect(func).toBeCalledTimes(1);
+      });
+    });
+
+    test('calls functions and returns an array of return values', () => {
+      const funcs = [
+        jest.fn(() => true),
+        jest.fn(() => 5),
+        jest.fn(() => 'stuff'),
+        jest.fn(() => () => {}),
+      ];
+
+      const values = invokeSequence(funcs, { returnValues: true });
+      expect(typeof values[0]).toBe('boolean');
+      expect(typeof values[1]).toBe('number');
+      expect(typeof values[2]).toBe('string');
+      expect(typeof values[3]).toBe('function');
+    });
+
+    test('returns only return values of a given type', () => {
+      const funcs = [
+        jest.fn(() => 'string 1'),
+        jest.fn(() => 5),
+        jest.fn(() => 'string 2'),
+        jest.fn(() => () => {}),
+        jest.fn(() => 'string 3'),
+      ];
+
+      const values = invokeSequence(funcs, {
+        returnValues: true,
+        filter: 'string',
+      });
+
+      expect(values.length).toBe(3);
+      values.forEach((val) => {
+        expect(typeof val).toBe('string');
+      });
     });
   });
 });
