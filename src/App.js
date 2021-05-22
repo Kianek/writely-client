@@ -5,10 +5,13 @@ import LoginPortal from './pages/LoginPortal';
 import Dashboard from './pages/Dashboard';
 import JournalView from './pages/JournalView';
 import Register from './pages/Register';
-import Settings from './pages/Settings';
+import Profile from './pages/Profile';
 import Page from './components/Page';
 import './App.scss';
 import ResetPassword from './pages/ResetPassword';
+import ChangeEmail from './pages/ChangeEmail';
+import ChangePassword from './pages/ChangePassword';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -32,8 +35,17 @@ function App() {
             <Route path="/reset-password">
               <ResetPassword />
             </Route>
-            <Route path="/settings">
-              <Settings />
+            <Route path="/profile">
+              <Profile />
+            </Route>
+            <Route path="/profile/email">
+              <ChangeEmail />
+            </Route>
+            <Route path="/profile/password">
+              <ChangePassword />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </Page>
