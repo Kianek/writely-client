@@ -8,14 +8,20 @@ export const capitalize = (value) => {
 
 export const invokeSequence = (
   funcArray,
-  opts = { returnValues: false, filter: null }
+  opts = { returnValues: false, filter: null, arg: null }
 ) => {
   if (!funcArray || funcArray.length === 0) {
     return;
   }
 
   if (opts.returnValues) {
-    let values = funcArray.map((func) => func());
+    let values;
+    if (!opts.arg) {
+      values = funcArray.map((func) => func());
+    } else {
+      values = funcArray.map((func) => func(opts.arg));
+    }
+
     if (!opts.filter) {
       return values;
     }
