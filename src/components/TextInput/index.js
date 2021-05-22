@@ -29,6 +29,7 @@ function TextInput({
     let errs = invokeSequence(validators, {
       returnValues: true,
       filter: 'string',
+      arg: value,
     });
 
     if (errorHandler) {
