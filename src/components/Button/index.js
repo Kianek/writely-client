@@ -17,10 +17,11 @@ function Button({
   success,
   children,
 }) {
+  const loadingOrDisabled = loading || disabled;
   const classes = classnames('btn', {
     block,
     danger,
-    disabled,
+    disabled: loadingOrDisabled,
     flat,
     info,
     outline,
@@ -34,7 +35,7 @@ function Button({
     <button
       type={type}
       className={classes}
-      disabled={disabled}
+      disabled={loadingOrDisabled}
       onClick={onClick}
     >
       {loading ? <Spinner /> : children}
