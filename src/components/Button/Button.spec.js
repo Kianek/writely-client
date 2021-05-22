@@ -20,6 +20,16 @@ describe('Button', () => {
     expect(screen.getByText(/Hover over me/i)).toBeInTheDocument();
   });
 
+  test('displays a spinner if loading', () => {
+    render(
+      <Button loading onClick={eventHandler}>
+        Click me
+      </Button>
+    );
+
+    expect(screen.getByTestId('spinner')).toBeInTheDocument();
+  });
+
   test('fires event handler', () => {
     render(<Button onClick={eventHandler}>Click me</Button>);
     screen.debug();
