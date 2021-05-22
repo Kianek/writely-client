@@ -1,0 +1,14 @@
+@import '../layout.scss';
+
+#toolbar {
+  @extend %row;
+  width: 100%;
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+}
