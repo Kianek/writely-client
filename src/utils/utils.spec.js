@@ -59,5 +59,22 @@ describe('utils', () => {
         expect(typeof val).toBe('string');
       });
     });
+
+    test('passes args to array functions', () => {
+      const funcs = [
+        jest.fn((val) => val * 2),
+        jest.fn((val) => val * 3),
+        jest.fn((val) => val * 4),
+      ];
+
+      const values = invokeSequence(funcs, {
+        returnValues: true,
+        arg: 2,
+      });
+
+      expect(values[0]).toBe(4);
+      expect(values[1]).toBe(6);
+      expect(values[2]).toBe(8);
+    });
   });
 });
