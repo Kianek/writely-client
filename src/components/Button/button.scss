@@ -30,6 +30,11 @@
     transform: translateY(-2px);
   }
 
+  &:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
   &.block {
     display: block;
     width: 100%;
