@@ -1,0 +1,15 @@
+@import '../colors.scss';
+
+@keyframes spin {
+  from {
+    transform: rotate();
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#spinner {
+  color: inherit;
+  animation: spin 1.75s linear infinite;
+}
