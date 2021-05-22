@@ -43,10 +43,9 @@
     background-color: $light-gray;
 
     &:hover {
-      cursor: not-allowed;
       border-bottom: 1px solid $light-gray;
       box-shadow: none;
-      cursor: pointer;
+      cursor: not-allowed;
       transform: none;
     }
   }
