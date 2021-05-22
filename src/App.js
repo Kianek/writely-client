@@ -20,14 +20,20 @@ function App() {
         <Navbar />
         <Page>
           <Switch>
-            <Route exact path="/">
-              <LoginPortal />
+            <Route exact path="/profile/email">
+              <ChangeEmail />
             </Route>
-            <Route path="/dashboard">
-              <Dashboard />
+            <Route exact path="/profile/password">
+              <ChangePassword />
             </Route>
             <Route path="/journal/:id">
               <JournalView />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
             </Route>
             <Route path="/register">
               <Register />
@@ -35,14 +41,8 @@ function App() {
             <Route path="/reset-password">
               <ResetPassword />
             </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-            <Route path="/profile/email">
-              <ChangeEmail />
-            </Route>
-            <Route path="/profile/password">
-              <ChangePassword />
+            <Route exact path="/">
+              <LoginPortal />
             </Route>
             <Route path="*">
               <NotFound />
