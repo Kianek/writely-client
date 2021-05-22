@@ -28,17 +28,16 @@ function Button({
     success,
   });
 
-  const loadingOrDisabled = loading || disabled;
   const type = submit ? 'submit' : 'button';
 
   return (
     <button
       type={type}
       className={classes}
-      disabled={loadingOrDisabled}
+      disabled={disabled}
       onClick={onClick}
     >
-      {loadingOrDisabled ? <Spinner /> : children}
+      {loading ? <Spinner /> : children}
     </button>
   );
 }
