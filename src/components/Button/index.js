@@ -45,10 +45,15 @@ function Button({
 
 Button.propTypes = {
   block: PropTypes.bool,
+  children: PropTypes.any,
+  danger: PropTypes.bool,
   disabled: PropTypes.bool,
   flat: PropTypes.bool,
+  info: PropTypes.bool,
   outline: PropTypes.bool,
+  raised: PropTypes.bool,
   submit: PropTypes.bool,
+  success: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
