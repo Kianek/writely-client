@@ -69,8 +69,7 @@ describe('Button', () => {
   test('should be disabled', () => {
     render(<Button disabled>Click me</Button>);
 
-    const btn = screen.getByText('Click me');
-    expect(btn).toHaveAttribute('disabled');
+    expect(screen.getByText('Click me')).toHaveAttribute('disabled');
   });
 
   test('should have block class', () => {
