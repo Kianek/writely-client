@@ -1,9 +1,7 @@
-import Panel from '../components/Panel';
-
 function NotFound() {
   return (
     <main>
-      <Panel>Whoopsies. Nothing to see here, folks.</Panel>
+      <h1>Whoopsies. Nothing to see here, folks.</h1>
     </main>
   );
 }
