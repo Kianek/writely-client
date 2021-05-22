@@ -6,8 +6,8 @@ import './menu.scss';
 function Menu({ onClickOutside, isVisible }) {
   const history = useHistory();
   const links = [
-    { url: '/settings', text: 'Settings' },
-    { url: '/', text: 'Sign Out' },
+    { id: 1, url: '/settings', text: 'Settings' },
+    { id: 2, url: '/', text: 'Sign Out' },
   ];
 
   const navigateTo = (link) => () => {
@@ -27,7 +27,7 @@ function Menu({ onClickOutside, isVisible }) {
       <div className="menu-content">
         <i className="arrow fas fa-sort-up"></i>
         {links.map((link) => (
-          <button className="link" onClick={navigateTo(link.url)}>
+          <button key={link.id} className="link" onClick={navigateTo(link.url)}>
             <div className="link-content">{link.text}</div>
           </button>
         ))}
