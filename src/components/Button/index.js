@@ -1,6 +1,7 @@
 import './button.scss';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import Spinner from '../Spinner';
 
 function Button({
   block,
@@ -8,6 +9,7 @@ function Button({
   disabled,
   flat,
   info,
+  loading,
   onClick,
   outline,
   raised,
@@ -26,26 +28,17 @@ function Button({
     success,
   });
 
-  if (submit) {
-    const onSubmit = (event) => {
-      event.preventDefault();
-      onClick();
-    };
-
-    return (
-      <input
-        className={classes}
-        type="submit"
-        disabled={disabled}
-        onClick={onSubmit}
-        value={children}
-      />
-    );
-  }
+  const loadingOrDisabled = loading || disabled;
+  const type = submit ? 'submit' : 'button';
 
   return (
-    <button className={classes} disabled={disabled} onClick={onClick}>
-      {children}
+    <button
+      type={type}
+      className={classes}
+      disabled={loadingOrDisabled}
+      onClick={onClick}
+    >
+      {loadingOrDisabled ? <Spinner /> : children}
     </button>
   );
 }
