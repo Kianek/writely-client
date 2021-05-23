@@ -24,7 +24,7 @@ function ResetPassword() {
       <Panel>
         <ToolBar left>
           <Button info onClick={useNavigateTo('/')}>
-            Back
+            <i className="fas fa-arrow-left" />
           </Button>
         </ToolBar>
         <h1>Reset Password</h1>
