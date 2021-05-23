@@ -1,0 +1,26 @@
+@import '../layout.scss';
+
+#row {
+  @extend %row;
+  width: 100%;
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+
+  &.spaceAround {
+    justify-content: space-around;
+  }
+
+  &.spaceBetween {
+    justify-content: space-between;
+  }
+
+  &.spaceEvenly {
+    justify-content: space-evenly;
+  }
+}
