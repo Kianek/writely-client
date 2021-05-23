@@ -29,7 +29,7 @@ function Register() {
       <Panel>
         <ToolBar left>
           <Button info onClick={useNavigateTo('/')}>
-            Back
+            <i className="fas fa-arrow-left" />
           </Button>
         </ToolBar>
         <h1>Create Account</h1>
@@ -55,7 +55,7 @@ function Register() {
             }}
           />
           <Button block submit disabled={passwordErrors.length > 0}>
-            Create
+            Register
           </Button>
         </Form>
       </Panel>
