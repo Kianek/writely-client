@@ -3,6 +3,8 @@ import Button from '../components/Button';
 import Form from '../components/Form';
 import Panel from '../components/Panel';
 import PasswordGroup from '../components/PasswordGroup';
+import ToolBar from '../components/ToolBar';
+import useNavigateTo from '../hooks/useNavigateTo';
 
 function ResetPassword() {
   const [errors, setErrors] = useState([]);
@@ -20,8 +22,13 @@ function ResetPassword() {
   return (
     <main>
       <Panel>
+        <ToolBar left>
+          <Button info onClick={useNavigateTo('/')}>
+            Back
+          </Button>
+        </ToolBar>
         <h1>Reset Password</h1>
-        <Form>
+        <Form onSubmit={onSubmit}>
           <PasswordGroup
             errors={{ errors: errors, handler: setErrors }}
             password={{ text: password, handler: setPassword }}
@@ -30,7 +37,7 @@ function ResetPassword() {
               handler: setConfirmPassword,
             }}
           />
-          <Button block submit onClick={onSubmit}>
+          <Button block submit>
             Reset
           </Button>
         </Form>
