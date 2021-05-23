@@ -1,8 +1,10 @@
+import classNames from 'classnames';
+
 import './list.scss';
 
-function List({ children }) {
+function List({ className, children }) {
   return (
-    <ul className="list" data-testid="list">
+    <ul className={classNames('list', className)} data-testid="list">
       {children}
     </ul>
   );
