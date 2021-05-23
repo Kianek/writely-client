@@ -64,7 +64,7 @@ function TextInput({
           value={value}
         />
         <div
-          data-testid="err"
+          data-testid="underline"
           className={classNames('bottom-border', {
             active: hasFocus,
             inactive: hasFocus === false && hasFocus !== null,
