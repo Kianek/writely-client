@@ -62,7 +62,7 @@ describe('TextInput', () => {
 
     const element = screen.getByPlaceholderText('Email');
     userEvent.type(element, 'jim@gmail.com', { delay: 1000 }).then(() => {
-      const bottomBorder = screen.getByTestId('err');
+      const bottomBorder = screen.getByTestId('underline');
 
       expect(bottomBorder).toHaveClass('success');
     });
