@@ -3,7 +3,17 @@ import JournalItem from '.';
 
 describe('JournalItem', () => {
   test('renders successfully', () => {
-    render(<JournalItem editHandler={() => {}} deleteHandler={() => {}} />);
+    const journal = {
+      id: 1,
+      title: 'My Journal',
+    };
+    render(
+      <JournalItem
+        journal={journal}
+        editHandler={() => {}}
+        deleteHandler={() => {}}
+      />
+    );
 
     expect(screen.getByTestId('journal-item'));
   });
