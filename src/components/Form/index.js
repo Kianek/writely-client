@@ -1,13 +1,18 @@
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './form.scss';
 
-function Form({ children, onSubmit }) {
+function Form({ children, fluid, onSubmit }) {
   const submitForm = (func) => (e) => {
     e.preventDefault();
     func();
   };
 
-  return <form onSubmit={submitForm(onSubmit)}>{children}</form>;
+  return (
+    <form className={classNames({ fluid })} onSubmit={submitForm(onSubmit)}>
+      {children}
+    </form>
+  );
 }
 
 Form.propTypes = {
