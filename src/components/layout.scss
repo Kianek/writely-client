@@ -12,3 +12,7 @@
   @extend %flex;
   flex-direction: row;
 }
+
+%fluid {
+  width: 100%;
+}
