@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import LoginPortal from './pages/LoginPortal';
 import Dashboard from './pages/Dashboard';
-import JournalView from './pages/JournalView';
+import Journal from './pages/Journal';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Page from './components/Page';
@@ -27,7 +27,7 @@ function App() {
               <ChangePassword />
             </Route>
             <Route path="/journal/:id">
-              <JournalView />
+              <Journal />
             </Route>
             <Route path="/profile">
               <Profile />
