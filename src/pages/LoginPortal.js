@@ -6,23 +6,31 @@ import Panel from '../components/Panel';
 import TextInput from '../components/TextInput';
 import Rule from '../components/Rule';
 import NavLink from '../components/NavLink';
+import useNavigateTo from '../hooks/useNavigateTo';
 import { useHistory } from 'react-router';
 
 function LoginPortal() {
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const onSubmit = (e) => {
-    console.log('submitting');
+  function submit() {
+    setLoading(false);
     history.push('/dashboard');
+  }
+
+  const onSubmit = (e) => {
+    setLoading(true);
+
+    setTimeout(submit, 1000);
   };
 
   return (
     <main>
       <Panel>
         <h1>Sign In</h1>
-        <Form>
+        <Form onSubmit={onSubmit}>
           <TextInput
             placeholder="Email"
             onChange={setEmail}
@@ -36,7 +44,7 @@ function LoginPortal() {
             validators={[isEmpty]}
             value={password}
           />
-          <Button block submit onClick={onSubmit}>
+          <Button block loading={loading} submit>
             Sign In
           </Button>
         </Form>
