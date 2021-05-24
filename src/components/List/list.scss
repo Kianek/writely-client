@@ -8,4 +8,9 @@
   overflow-y: scroll;
   padding: 0;
   width: 300px;
+
+  &.thin {
+    padding: 0.25em;
+    width: 200px;
+  }
 }
