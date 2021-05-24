@@ -5,6 +5,7 @@ import Spinner from '../Spinner';
 
 function Button({
   block,
+  className,
   danger,
   disabled,
   flat,
@@ -18,16 +19,20 @@ function Button({
   children,
 }) {
   const loadingOrDisabled = loading || disabled;
-  const classes = classnames('btn', {
-    block,
-    danger,
-    disabled: loadingOrDisabled,
-    flat,
-    info,
-    outline,
-    raised,
-    success,
-  });
+  const classes = classnames(
+    'btn',
+    {
+      block,
+      danger,
+      disabled: loadingOrDisabled,
+      flat,
+      info,
+      outline,
+      raised,
+      success,
+    },
+    className
+  );
 
   const type = submit ? 'submit' : 'button';
 
@@ -46,6 +51,7 @@ function Button({
 Button.propTypes = {
   block: PropTypes.bool,
   children: PropTypes.any,
+  className: PropTypes.string,
   danger: PropTypes.bool,
   disabled: PropTypes.bool,
   flat: PropTypes.bool,
