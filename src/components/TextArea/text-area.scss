@@ -1,0 +1,14 @@
+@import '../layout.scss';
+
+textarea {
+  font-size: 1em;
+  border: none;
+  columns: 20;
+  height: 50vh;
+  outline: none;
+  resize: none;
+
+  &.fluid {
+    @extend %fluid;
+  }
+}
