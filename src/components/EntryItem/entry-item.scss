@@ -1,0 +1,15 @@
+@import '../colors.scss';
+
+#entry-item {
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  margin: 1em auto;
+  padding-left: 1em;
+  transition: 0.2s;
+
+  &:hover {
+    @include box-shadow;
+    cursor: pointer;
+    transform: translateY(-10px);
+  }
+}
