@@ -4,7 +4,7 @@ import List from '../List';
 
 function EntryList({ className, entries, entrySelector }) {
   return (
-    <section>
+    <section data-testid="entry-list">
       <List thin>
         {entries.map((entry) => (
           <EntryItem key={entry.id} entry={entry} onClick={entrySelector} />
