@@ -6,6 +6,7 @@ import debounce from 'lodash/debounce';
 import './text-input.scss';
 
 function TextInput({
+  fluid,
   errorHandler,
   onChange,
   placeholder,
@@ -52,9 +53,10 @@ function TextInput({
   };
 
   return (
-    <div className="text-input">
-      <div className="input-group">
+    <div className={classNames('text-input', { fluid })}>
+      <div className={classNames('input-group', { fluid })}>
         <input
+          className={classNames('input', { fluid })}
           type={password ? 'password' : 'text'}
           onChange={setState}
           onKeyUp={validate}
@@ -70,6 +72,7 @@ function TextInput({
             inactive: hasFocus === false && hasFocus !== null,
             errors: errors && errors.length > 0,
             success: valid,
+            fluid,
           })}
         ></div>
         {errors && errors.length > 0 && <p className="errors">{errors}</p>}
