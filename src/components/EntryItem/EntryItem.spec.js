@@ -3,7 +3,8 @@ import EntryItem from '.';
 
 describe('EntryItem', () => {
   test('renders successfully', () => {
-    render(<EntryItem title="My Entry" />);
+    const entry = { title: 'My Entry' };
+    render(<EntryItem entry={entry} onClick={() => {}} />);
 
     expect(screen.getByText('My Entry')).toBeInTheDocument();
   });
