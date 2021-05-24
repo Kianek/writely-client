@@ -8,4 +8,8 @@ form {
   margin: auto;
   padding: 0.5em;
   width: 200px;
+
+  &.fluid {
+    @extend %fluid;
+  }
 }
