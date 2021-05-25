@@ -16,7 +16,7 @@ header {
       color: $secondary;
       font-family: 'Dancing Script', cursive;
       font-size: 1.75em;
-      margin-right: auto;
+      margin: auto;
       text-decoration: none;
     }
 
@@ -24,6 +24,7 @@ header {
       border: 1px solid $primary;
       border-radius: 3px;
       color: $secondary;
+      margin-left: auto;
       padding: 0.5em;
       text-decoration: none;
       transition: 0.3s;
