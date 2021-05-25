@@ -6,6 +6,8 @@ import EntryView from '../components/EntryView';
 import Row from '../components/Row';
 import ToolBar from '../components/ToolBar';
 import useNavigateTo from '../hooks/useNavigateTo';
+import JournalViewDesktop from '../components/JournalViewDesktop';
+import JournalViewMobile from '../components/JournalViewMobile';
 
 const entries = [
   {
@@ -30,13 +32,10 @@ const entries = [
 
 function Journal() {
   const [screenWidth, setScreenWidth] = useState(document.body.clientWidth);
-  const [currentEntry, setCurrentEntry] = useState(null);
 
   useEffect(() => {
     const resizeWindow = () => {
-      console.log(
-        `x: ${document.body.clientWidth}, y: ${document.body.clientHeight}`
-      );
+      setScreenWidth(document.body.clientWidth);
     };
 
     window.addEventListener('resize', resizeWindow);
@@ -44,30 +43,12 @@ function Journal() {
     return () => {
       window.removeEventListener('resize', resizeWindow);
     };
-  });
+  }, [screenWidth]);
 
-  const selectJournal = (id) => {
-    console.log(id);
-    const entry = entries.find((e) => e.id === id);
-    if (!entry) {
-      return;
-    }
-
-    setCurrentEntry(entry);
-  };
-
-  return (
-    <div id="journal-view">
-      <Row left>
-        <Button info onClick={useNavigateTo('/dashboard')}>
-          <i className="fas fa-arrow-left" />
-        </Button>
-      </Row>
-      <Row spaceEvenly>
-        <EntryList entries={entries} />
-        <EntryView />
-      </Row>
-    </div>
+  return screenWidth >= 700 ? (
+    <JournalViewDesktop entries={entries} />
+  ) : (
+    <JournalViewMobile entries={entries} />
   );
 }
 
