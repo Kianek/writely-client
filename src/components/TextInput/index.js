@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { capitalize, invokeSequence } from '../../utils';
 import debounce from 'lodash/debounce';
 import './text-input.scss';
+import TextInputUnderline from '../TextInputUnderline';
 
 function TextInput({
   fluid,
@@ -65,16 +66,7 @@ function TextInput({
           placeholder={placeholder}
           value={value}
         />
-        <div
-          data-testid="underline"
-          className={classNames('bottom-border', {
-            active: hasFocus,
-            inactive: hasFocus === false && hasFocus !== null,
-            errors: errors && errors.length > 0,
-            success: valid,
-            fluid,
-          })}
-        ></div>
+        <TextInputUnderline errors={errors} hasFocus={hasFocus} valid={valid} />
         {errors && errors.length > 0 && <p className="errors">{errors}</p>}
       </div>
     </div>
