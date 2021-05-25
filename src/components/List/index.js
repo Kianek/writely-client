@@ -2,8 +2,10 @@ import classNames from 'classnames';
 
 import './list.scss';
 
-function List({ className, children, thin }) {
+function List({ borderless, className, children, fluid, thin }) {
   const classes = {
+    borderless,
+    fluid,
     thin,
   };
   return (
