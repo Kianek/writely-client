@@ -1,0 +1,56 @@
+@import '../colors.scss';
+
+@keyframes slide-in {
+  from {
+    left: -210px;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -210px;
+  }
+}
+
+#jv-mobile {
+  position: relative;
+}
+
+.entry-list {
+  background-color: $primary;
+  display: block;
+  height: 86vh;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: -210px;
+  bottom: 0;
+  z-index: 30;
+
+  &.active {
+    animation-name: slide-in;
+    animation-duration: 0.2s;
+    left: 0;
+  }
+
+  &.inactive {
+    animation-name: slide-out;
+    animation-duration: 0.2s;
+    left: -210px;
+  }
+}
+
+.toolbar {
+  background-color: $white;
+  position: relative;
+  width: 100vw;
+  z-index: 25;
+}
