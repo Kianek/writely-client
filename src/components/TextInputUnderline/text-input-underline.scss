@@ -1,0 +1,30 @@
+@import '../colors.scss';
+@import '../layout.scss';
+
+.underline {
+  border-bottom: 2px solid $info;
+  bottom: 2px;
+  position: relative;
+  width: 0;
+
+  &.active {
+    animation-name: sweep;
+    animation-duration: 0.3s;
+    border-bottom: 2px solid $info;
+    width: 100%;
+  }
+
+  &.inactive {
+    animation-name: sweep-reverse;
+    animation-duration: 0.3s;
+    width: 0;
+  }
+
+  &.errors {
+    border-bottom: 2px solid $danger;
+  }
+
+  &.success {
+    border-bottom: 2px solid $success;
+  }
+}
