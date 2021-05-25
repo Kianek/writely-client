@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-function useOutsideClick(handler) {
+function useOutsideClick(el, handler) {
   useEffect(() => {
-    const element = document.getElementById('dropdown');
+    const element = document.querySelector(el);
     const listener = (e) => {
       if (element && !element.contains(e.target)) {
         handler();
