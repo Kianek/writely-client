@@ -6,6 +6,7 @@ import Column from '../Column';
 import Form from '../Form';
 import TextArea from '../TextArea';
 import TextInput from '../TextInput';
+import './entry-view.scss';
 
 function EntryView({ className, entry }) {
   const [title, setTitle] = useState('Entry');
@@ -15,7 +16,7 @@ function EntryView({ className, entry }) {
   const onSubmit = () => console.log('click');
 
   return (
-    <Column spaceAround>
+    <div id="entry-view">
       <Form fluid onSubmit={onSubmit}>
         <TextInput
           fluid
@@ -33,7 +34,7 @@ function EntryView({ className, entry }) {
           Save
         </Button>
       </Form>
-    </Column>
+    </div>
   );
 }
 
