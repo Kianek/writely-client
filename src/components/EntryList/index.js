@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
+import Button from '../Button';
 import EntryItem from '../EntryItem';
 import List from '../List';
+import './entry-list.scss';
 
 function EntryList({ className, entries, entrySelector }) {
   return (
-    <section data-testid="entry-list">
+    <section id="entry-list" data-testid="entry-list">
       <List borderless thin>
         {entries.map((entry) => (
           <EntryItem key={entry.id} entry={entry} onClick={entrySelector} />
