@@ -6,7 +6,7 @@ function TextInputUnderline({ errors, hasFocus, valid }) {
   return (
     <div
       data-testid="underline"
-      className={classNames('bottom-border', {
+      className={classNames('underline', {
         active: hasFocus,
         inactive: hasFocus === false && hasFocus !== null,
         errors: errors && errors.length > 0,
@@ -17,7 +17,7 @@ function TextInputUnderline({ errors, hasFocus, valid }) {
 }
 
 TextInputUnderline.propTypes = {
-  errors: PropTypes.arrayOf(PropTypes.string),
+  errors: PropTypes.string,
   hasFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.instanceOf(null)]),
   valid: PropTypes.oneOfType([PropTypes.bool, PropTypes.instanceOf(null)]),
 };
