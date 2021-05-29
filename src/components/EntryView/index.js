@@ -29,7 +29,7 @@ function EntryView({ className, entry }) {
           fluid
           onChange={(e) => setBody(e.target.value)}
           value={body}
-        ></TextArea>
+        />
         <Button block submit>
           Save
         </Button>
