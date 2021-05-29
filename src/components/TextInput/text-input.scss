@@ -1,25 +1,6 @@
+@import '../animations.scss';
 @import '../colors.scss';
 @import '../layout.scss';
-
-/* Bottom border animation */
-@keyframes sweep {
-  0% {
-    width: 0;
-  }
-
-  100% {
-    width: 100%;
-  }
-}
-
-@keyframes sweep-reverse {
-  0% {
-    width: 100%;
-  }
-  100% {
-    width: 0;
-  }
-}
 
 .text-input {
   margin: 0.5em;
@@ -52,38 +33,5 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.75em;
     font-weight: bold;
-  }
-
-  .bottom-border {
-    @extend %fluid;
-    border-bottom: 2px solid $info;
-    bottom: 2px;
-    position: relative;
-    width: 0;
-
-    &.active {
-      animation-name: sweep;
-      animation-duration: 0.3s;
-      border-bottom: 2px solid $info;
-      width: 100%;
-
-      &.fluid {
-        @extend %fluid;
-      }
-    }
-
-    &.inactive {
-      animation-name: sweep-reverse;
-      animation-duration: 0.3s;
-      width: 0;
-    }
-
-    &.errors {
-      border-bottom: 2px solid $danger;
-    }
-
-    &.success {
-      border-bottom: 2px solid $success;
-    }
   }
 }
