@@ -1,14 +1,21 @@
+@import '../animations.scss';
+@import '../colors.scss';
 @import '../layout.scss';
 
-textarea {
-  font-size: 1em;
-  border: none;
-  columns: 20;
-  height: 50vh;
-  outline: none;
-  resize: none;
+#text-area {
+  width: 100%;
 
-  &.fluid {
+  textarea {
+    font-size: 1em;
+    border: none;
+    border-bottom: 2px solid $light-gray;
+    columns: 20;
+    height: 50vh;
+    outline: none;
+    resize: none;
+  }
+
+  textarea.fluid {
     @extend %fluid;
   }
 }
