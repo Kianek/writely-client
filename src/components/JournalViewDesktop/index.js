@@ -7,10 +7,11 @@ import Row from '../Row';
 function JournalViewDesktop({ entries }) {
   return (
     <div id="journal-view" data-testid="jv-desktop">
-      <Row left>
+      <Row left spaceBetween>
         <Button info onClick={useNavigateTo('/dashboard')}>
           <i className="fas fa-arrow-left" />
         </Button>
+        <Button success>New Entry</Button>
       </Row>
       <Row spaceEvenly>
         <EntryList entries={entries} />
