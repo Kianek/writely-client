@@ -1,7 +1,7 @@
 import validator from 'validator';
 
 export const minLength = (len) => (val) => {
-  return (!!val && val.length > len) || `must be at least ${len} character/s`;
+  return (!!val && val.length >= len) || `must be at least ${len} character/s`;
 };
 
 export const isEmpty = (val) =>
