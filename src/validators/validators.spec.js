@@ -15,6 +15,12 @@ describe('validators', () => {
       expect(func('someword')).toBeTruthy();
     });
 
+    test('value meets the exact length', () => {
+      func = minLength(4);
+
+      expect(func('dogs')).toBeTruthy();
+    });
+
     test('value does not meet minimum length requirement', () => {
       func = minLength(8);
 
