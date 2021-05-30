@@ -31,7 +31,7 @@ function Profile() {
       )}
       <Panel>
         <ToolBar left>
-          <Button info onClick={useNavigateTo('/dashboard')}>
+          <Button circle info onClick={useNavigateTo('/dashboard')}>
             <i className="fas fa-arrow-left" />
           </Button>
         </ToolBar>
