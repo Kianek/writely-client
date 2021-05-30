@@ -1,18 +1,19 @@
 @import '../colors.scss';
 
 .menu-icon {
-  background-color: $primary;
+  background-color: $white;
   color: $secondary;
-  border: 1px solid $secondary;
+  border: 1px solid $white;
   border-radius: 100%;
   font-size: 1em;
-  padding: 0.7em;
+  height: 40px;
+  width: 40px;
+  padding: 0.5em;
   transition: 0.2s;
 
   &:hover,
   &.active {
     cursor: pointer;
-    color: $primary;
-    background-color: $secondary;
+    background-color: $light-gray;
   }
 }
