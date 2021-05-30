@@ -6,6 +6,7 @@ import Spinner from '../Spinner';
 function Button({
   block,
   className,
+  circle,
   danger,
   disabled,
   flat,
@@ -23,6 +24,7 @@ function Button({
     'btn',
     {
       block,
+      circle,
       danger,
       disabled: loadingOrDisabled,
       flat,
@@ -51,6 +53,7 @@ function Button({
 Button.propTypes = {
   block: PropTypes.bool,
   children: PropTypes.any,
+  circle: PropTypes.bool,
   className: PropTypes.string,
   danger: PropTypes.bool,
   disabled: PropTypes.bool,
