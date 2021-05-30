@@ -4,23 +4,23 @@
 $rate: 0.15s;
 
 #menu {
-  background-color: $primary;
-  border-radius: 5px;
+  background-color: $white;
+  border-radius: 3px;
   visibility: none;
   position: absolute;
-  top: 150%;
+  top: 120%;
   right: 0;
   height: 200px;
   width: 200px;
   z-index: 100;
-  transform: translateY(-15px);
+  transform: translateY(0);
 
   &.active {
-    @include box-shadow($y: 3px, $spread: 1px, $blur: 4px);
+    @include box-shadow($y: 1px, $spread: 1px, $blur: 4px);
     display: flex;
     visibility: visible;
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-10px);
     transition: transform $rate, opacity $rate linear;
   }
 
@@ -28,12 +28,12 @@ $rate: 0.15s;
     display: flex;
     visibility: hidden;
     opacity: 0;
-    transform: translateY(-15px);
+    transform: translateY(0);
     transition: visibility $rate, transform $rate, opacity $rate linear;
   }
 
   .arrow {
-    color: $primary;
+    color: $white;
     font-size: 2em;
     position: absolute;
     right: 10px;
@@ -47,10 +47,10 @@ $rate: 0.15s;
     overflow: hidden;
 
     .link {
-      background-color: $primary;
+      background-color: $white;
       border: none;
-      border-bottom: 2px solid $secondary;
-      color: $secondary;
+      border-bottom: 2px solid $light-gray;
+      color: $gray;
       font-size: 1.5em;
       font-family: 'Barlow Condensed', sans-serif;
       margin: 0.25em;
@@ -72,6 +72,7 @@ $rate: 0.15s;
       }
 
       &:hover .link-content {
+        color: $info;
         transform: translateY(-8px);
         transition: 0.2s;
       }
