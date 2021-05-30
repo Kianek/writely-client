@@ -4,12 +4,13 @@
 footer {
   @extend %row;
 
-  background-color: $primary;
+  align-items: center;
+  background-color: $white;
+  border-top: 1px solid $light-gray;
   color: $secondary;
   font-size: 1.25em;
   height: 50px;
   text-align: center;
-  align-items: center;
 
   .content {
     margin: auto;
