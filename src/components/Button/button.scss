@@ -2,7 +2,7 @@
 
 @mixin color-btn($color) {
   background-color: $color;
-  border: 1px solid darken($color, 20%);
+  border: 1px solid $color;
   color: $white;
   transform: none;
 
@@ -20,7 +20,6 @@
   border-radius: 3px;
   color: $gray;
   font-size: 1em;
-  margin: 0.5em;
   padding: 0.5em 1em;
   transition: 0.2s;
 
@@ -39,6 +38,13 @@
   &.block {
     display: block;
     width: 100%;
+  }
+
+  &.circle {
+    border-radius: 2.5em;
+    font-size: 1em;
+    height: 3em;
+    width: 3em;
   }
 
   &.danger {
