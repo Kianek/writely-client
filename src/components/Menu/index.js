@@ -25,7 +25,6 @@ function Menu({ onClickOutside, isVisible }) {
       data-testid="menu"
     >
       <div className="menu-content">
-        <i className="arrow fas fa-sort-up"></i>
         {links.map((link) => (
           <button key={link.id} className="link" onClick={navigateTo(link.url)}>
             <div className="link-content">{link.text}</div>
