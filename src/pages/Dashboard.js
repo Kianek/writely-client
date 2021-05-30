@@ -39,7 +39,7 @@ function Dashboard() {
       )}
       <Panel>
         <ToolBar right>
-          <Button success onClick={() => setShowModal(true)}>
+          <Button circle success onClick={() => setShowModal(true)}>
             <i className="fas fa-plus"></i>
           </Button>
         </ToolBar>
