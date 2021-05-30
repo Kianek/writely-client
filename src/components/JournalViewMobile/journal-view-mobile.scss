@@ -29,9 +29,9 @@
 }
 
 .entry-list {
-  background-color: $primary;
-  display: block;
-  height: 86vh;
+  background-color: $white;
+  display: flex;
+  height: 100vh;
   margin: auto;
   position: absolute;
   top: 0;
@@ -40,6 +40,7 @@
   z-index: 30;
 
   &.active {
+    @include box-shadow($y: 2px, $spread: 2px);
     animation-name: slide-in;
     animation-duration: 0.2s;
     left: 0;
