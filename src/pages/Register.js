@@ -28,7 +28,7 @@ function Register() {
     <main>
       <Panel>
         <ToolBar left>
-          <Button info onClick={useNavigateTo('/')}>
+          <Button circle info onClick={useNavigateTo('/')}>
             <i className="fas fa-arrow-left" />
           </Button>
         </ToolBar>
