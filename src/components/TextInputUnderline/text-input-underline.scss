@@ -3,7 +3,6 @@
 @import '../layout.scss';
 
 .underline {
-  @extend %fluid;
   border-bottom: 2px solid $info;
   bottom: 2px;
   position: relative;
@@ -13,11 +12,7 @@
     animation-name: sweep;
     animation-duration: 0.3s;
     border-bottom: 2px solid $info;
-    width: 100%;
-
-    &.fluid {
-      @extend %fluid;
-    }
+    width: inherit;
   }
 
   &.inactive {
