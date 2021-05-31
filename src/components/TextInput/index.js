@@ -54,21 +54,18 @@ function TextInput({
   };
 
   return (
-    <div className={classNames('text-input', { fluid })}>
-      <div className={classNames('input-group', { fluid })}>
-        <input
-          className={classNames('input', { fluid })}
-          type={password ? 'password' : 'text'}
-          onChange={setState}
-          onKeyUp={validate}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          placeholder={placeholder}
-          value={value}
-        />
-        <TextInputUnderline errors={errors} hasFocus={hasFocus} valid={valid} />
-        {errors && errors.length > 0 && <p className="errors">{errors}</p>}
-      </div>
+    <div className="input-group">
+      <input
+        type={password ? 'password' : 'text'}
+        onChange={setState}
+        onKeyUp={validate}
+        onFocus={() => setFocus(true)}
+        onBlur={() => setFocus(false)}
+        placeholder={placeholder}
+        value={value}
+      />
+      <TextInputUnderline errors={errors} hasFocus={hasFocus} valid={valid} />
+      {errors && errors.length > 0 && <p className="errors">{errors}</p>}
     </div>
   );
 }
