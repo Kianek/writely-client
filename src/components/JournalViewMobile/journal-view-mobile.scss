@@ -1,4 +1,5 @@
 @import '../colors.scss';
+@import '../layout.scss';
 
 @keyframes slide-in {
   from {
@@ -20,23 +21,30 @@
   }
 }
 
+$width: 250px;
+
 #jv-mobile {
   position: relative;
+  width: 100%;
 }
 
 .content {
+  @extend %column;
+  align-items: center;
+  justify-content: center;
   margin: auto;
 }
 
 .entry-list {
+  @extend %column;
   background-color: $white;
-  display: flex;
-  height: 100vh;
+  height: 101vh;
   margin: auto;
   position: absolute;
   top: 0;
-  left: -210px;
+  left: -$width;
   bottom: 0;
+  width: $width;
   z-index: 30;
 
   &.active {
@@ -49,7 +57,7 @@
   &.inactive {
     animation-name: slide-out;
     animation-duration: 0.2s;
-    left: -210px;
+    left: -$width;
   }
 }
 
