@@ -17,23 +17,25 @@ function EntryView({ className, entry }) {
 
   return (
     <div id="entry-view">
-      <Form fluid onSubmit={onSubmit}>
-        <TextInput
-          fluid
-          placeholder="Title"
-          onChange={setTitle}
-          value={title}
-        />
-        <TextInput fluid placeholder="Tags" onChange={setTags} value={tags} />
-        <TextArea
-          fluid
-          onChange={(e) => setBody(e.target.value)}
-          value={body}
-        />
-        <Button block submit>
-          Save
-        </Button>
-      </Form>
+      <Column>
+        <Form fluid onSubmit={onSubmit}>
+          <TextInput
+            fluid
+            placeholder="Title"
+            onChange={setTitle}
+            value={title}
+          />
+          <TextInput fluid placeholder="Tags" onChange={setTags} value={tags} />
+          <TextArea
+            fluid
+            onChange={(e) => setBody(e.target.value)}
+            value={body}
+          />
+          <Button block flat submit>
+            Save
+          </Button>
+        </Form>
+      </Column>
     </div>
   );
 }
