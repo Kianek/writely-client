@@ -54,7 +54,7 @@ function TextInput({
   };
 
   return (
-    <div className="input-group">
+    <div className={classNames('input-group', { fluid })}>
       <input
         type={password ? 'password' : 'text'}
         onChange={setState}
@@ -72,6 +72,7 @@ function TextInput({
 
 TextInput.propTypes = {
   errorHandler: PropTypes.func,
+  fluid: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   password: PropTypes.bool,
