@@ -4,10 +4,8 @@
 form {
   @extend %column;
 
-  border-radius: 3px;
   margin: auto;
-  padding: 0.5em;
-  width: 200px;
+  width: 300px;
 
   &.fluid {
     @extend %fluid;
