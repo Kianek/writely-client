@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from '../components/Button';
 import Form from '../components/Form';
+import Padding from '../components/Padding';
 import Panel from '../components/Panel';
 import PasswordGroup from '../components/PasswordGroup';
 import Rule from '../components/Rule';
@@ -39,11 +40,13 @@ function Register() {
             onChange={setFirstName}
             value={firstName}
           />
+          <Padding amount="0.25em" />
           <TextInput
             placeholder="Last Name"
             onChange={setLastName}
             value={lastName}
           />
+          <Padding amount="0.25em" />
           <TextInput placeholder="Email" onChange={setEmail} value={email} />
           <Rule />
           <PasswordGroup

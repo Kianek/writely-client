@@ -8,6 +8,7 @@ import Rule from '../components/Rule';
 import NavLink from '../components/NavLink';
 import useNavigateTo from '../hooks/useNavigateTo';
 import { useHistory } from 'react-router';
+import Padding from '../components/Padding';
 
 function LoginPortal() {
   const history = useHistory();
@@ -37,6 +38,7 @@ function LoginPortal() {
             validators={[isEmail]}
             value={email}
           />
+          <Padding amount="0.25em" />
           <TextInput
             password
             placeholder="Password"
@@ -44,6 +46,7 @@ function LoginPortal() {
             validators={[isEmpty]}
             value={password}
           />
+          <Padding amount="0.25em" />
           <Button block loading={loading} submit>
             Sign In
           </Button>
