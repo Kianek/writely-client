@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import Column from '../Column';
 import './form.scss';
 
 function Form({ children, fluid, onSubmit }) {
@@ -10,7 +11,7 @@ function Form({ children, fluid, onSubmit }) {
 
   return (
     <form className={classNames({ fluid })} onSubmit={submitForm(onSubmit)}>
-      {children}
+      <Column>{children}</Column>
     </form>
   );
 }
