@@ -3,7 +3,11 @@
 @import '../layout.scss';
 
 .input-group {
-  width: 100%;
+  width: 200px;
+
+  &.fluid {
+    width: 100%;
+  }
 
   input {
     border: none;
@@ -24,3 +28,9 @@ p.errors {
   font-size: 0.75em;
   font-weight: bold;
 }
+
+// @media screen and (min-width: 599px) {
+//   .input-group {
+//     width: 100%;
+//   }
+// }
