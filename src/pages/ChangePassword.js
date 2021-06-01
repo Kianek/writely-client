@@ -18,7 +18,7 @@ function ChangePassword() {
     <main>
       <Panel>
         <ToolBar left>
-          <Button info onClick={useNavigateTo('/profile')}>
+          <Button circle info onClick={useNavigateTo('/profile')}>
             <i className="fas fa-arrow-left" />
           </Button>
         </ToolBar>
