@@ -2,7 +2,7 @@
 @import '../layout.scss';
 
 header {
-  @include box-shadow($y: 1px);
+  @include box-shadow($y: -2px);
   background-color: $white;
   width: 100%;
 
