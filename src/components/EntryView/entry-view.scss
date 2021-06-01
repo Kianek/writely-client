@@ -1,3 +1,18 @@
+@import '../layout.scss';
+
 #entry-view {
-  width: 400px;
+  @extend %column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+}
+
+@media screen and (min-width: 599px) {
+  #entry-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 475px;
+  }
 }
