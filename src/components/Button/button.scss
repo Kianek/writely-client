@@ -25,7 +25,7 @@
   transition: 0.2s;
 
   &:hover {
-    @include box-shadow;
+    @include box-shadow($y: 5px, $spread: 0, $blur: 8px);
     border: 1px solid $white;
     cursor: pointer;
     transform: translateY(-2px);
