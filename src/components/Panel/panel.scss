@@ -2,8 +2,7 @@
 @import '../layout.scss';
 
 .panel {
-  @include box-shadow;
-  @extend %column;
+  @include box-shadow($y: 2px, $blur: 5px);
 
   border-radius: 3px;
   margin: auto;
