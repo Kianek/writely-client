@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/profile/password">
               <ChangePassword />
             </Route>
-            <Route path="/journal/:id">
+            <Route path="/journal/:journalId">
               <Journal />
             </Route>
             <Route path="/profile">
