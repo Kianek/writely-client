@@ -13,19 +13,34 @@ export const entriesSlice = createSlice({
     createEntry(state, action) {},
     fetchEntries(state, action) {},
     fetchEntryById(state, action) {},
+    loadEntries(state, action) {
+      state.entries = action.payload.entries;
+    },
+    selectEntryById(state, action) {
+      state.selectedEntry = state.entries.find(
+        (e) => e.id === action.payload.id
+      );
+      console.log(state.selectedEntry);
+    },
     updateEntry(state, action) {},
     deleteEntry(state, action) {},
   },
 });
 
 const { actions, reducer } = entriesSlice;
-export const { fetchEntries, fetchEntryById, updateEntry, deleteEntry } =
-  actions;
+export const {
+  deleteEntry,
+  fetchEntries,
+  fetchEntryById,
+  loadEntries,
+  selectEntryById,
+  updateEntry,
+} = actions;
 
-export const selectEntry = (state, id) => {
-  state.entries.find((entry) => entry.id === id);
+export const selectCurrentEntry = (state) => {
+  return state.entries.selectedEntry;
 };
 
-export const selectEntries = (state) => state.entries;
+export const selectEntries = (state) => state.entries.entries;
 
 export default reducer;

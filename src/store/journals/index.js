@@ -1,6 +1,8 @@
 import { status } from '../constants';
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import mockJournals from './mock-journals';
+
+const fetchJournals = createAsyncThunk('journals/fetchJournals');
 
 export const journalsSlice = createSlice({
   name: 'journals',
@@ -27,7 +29,6 @@ export const journalsSlice = createSlice({
 
 const { actions, reducer } = journalsSlice;
 export const {
-  fetchJournals,
   fetchJournalById,
   selectJournalById,
   updateJournal,

@@ -9,7 +9,6 @@ const authSlice = createSlice({
     user: {},
   },
   reducers: {
-    createAccount(state, action) {},
     deleteAccount(state, action) {},
     updateEmail(state, action) {},
     updatePassword(state, action) {},
@@ -23,14 +22,8 @@ const authSlice = createSlice({
 });
 
 const { actions, reducer } = authSlice;
-export const {
-  createAccount,
-  deleteAccount,
-  signIn,
-  signOut,
-  updateEmail,
-  updatePassword,
-} = actions;
+export const { deleteAccount, signIn, signOut, updateEmail, updatePassword } =
+  actions;
 
 export const isAuthenticated = (state) => state.signedIn;
 
