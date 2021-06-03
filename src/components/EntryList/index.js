@@ -4,12 +4,12 @@ import EntryItem from '../EntryItem';
 import List from '../List';
 import './entry-list.scss';
 
-function EntryList({ className, entries, entrySelector }) {
+function EntryList({ className, entries }) {
   return (
     <section id="entry-list" data-testid="entry-list">
       <List borderless thin>
         {entries.map((entry) => (
-          <EntryItem key={entry.id} entry={entry} onClick={entrySelector} />
+          <EntryItem key={entry.id} entry={entry} />
         ))}
       </List>
     </section>

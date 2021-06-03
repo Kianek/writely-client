@@ -8,11 +8,24 @@ import TextArea from '../TextArea';
 import TextInput from '../TextInput';
 import './entry-view.scss';
 import Padding from '../Padding';
+import { useSelector } from 'react-redux';
+import { selectCurrentEntry } from '../../store/entries';
 
-function EntryView({ className, entry }) {
-  const [title, setTitle] = useState('Entry');
-  const [tags, setTags] = useState('one,two,three');
-  const [body, setBody] = useState('Stuff');
+function EntryView({ className }) {
+  const entry = useSelector((state) => {
+    console.log(state.entries);
+    return state.entries.selectedEntry;
+  });
+
+  const [title, setTitle] = useState(entry.title);
+  const [tags, setTags] = useState(entry.tags);
+  const [body, setBody] = useState(entry.body);
+
+  useEffect(() => {
+    setTitle(entry.title);
+    setTags(entry.tags);
+    setBody(entry.body);
+  }, [entry, setTitle, setTags, setBody]);
 
   const onSubmit = () => console.log('click');
 
@@ -32,6 +45,7 @@ function EntryView({ className, entry }) {
           <TextArea
             fluid
             onChange={(e) => setBody(e.target.value)}
+            placeholder="Body"
             value={body}
           />
           <Button block flat submit>

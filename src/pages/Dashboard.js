@@ -4,50 +4,59 @@ import JournalItem from '../components/JournalItem';
 import List from '../components/List';
 import Modal from '../components/Modal';
 import Panel from '../components/Panel';
-import ToolBar from '../components/ToolBar';
-
-const journals = [
-  {
-    id: 1,
-    title: 'Spiffy Journal',
-    createdAt: new Date().toLocaleTimeString(),
-  },
-  {
-    id: 2,
-    title: 'Dreams',
-    createdAt: new Date().toLocaleTimeString(),
-  },
-  {
-    id: 3,
-    title: 'Favorite Movies',
-    createdAt: new Date().toLocaleTimeString(),
-  },
-];
+import TextInput from '../components/TextInput';
+import Row from '../components/Row';
+import { useSelector } from 'react-redux';
+import { selectJournals } from '../store/journals';
 
 function Dashboard() {
   const [showModal, setShowModal] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [newTitle, setNewTitle] = useState('');
+  const journals = useSelector(selectJournals);
+
+  console.log(journals);
+  const closeModal = () => setShowModal(false);
+
+  const toggleEditMode = () => setEditMode(!editMode);
+
+  const onConfirm = () => {
+    closeModal();
+  };
+
+  const onCancel = () => {
+    setNewTitle('');
+    closeModal();
+  };
 
   return (
     <Fragment>
       {showModal && (
         <Modal
-          heading="heading"
-          message="msg"
-          onConfirm={() => setShowModal(false)}
-          onCancel={() => setShowModal(false)}
-        ></Modal>
+          heading="Create a New Journal"
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+        >
+          <h2>Name it something nice</h2>
+          <TextInput
+            onChange={setNewTitle}
+            placeholder="Title"
+            value={newTitle}
+          />
+        </Modal>
       )}
       <Panel>
-        <ToolBar right>
+        <Row right>
           <Button circle success onClick={() => setShowModal(true)}>
             <i className="fas fa-plus"></i>
           </Button>
-        </ToolBar>
+        </Row>
         <List ordered>
           {journals.map((journal) => (
             <JournalItem
               key={journal.id}
               journal={journal}
+              editMode={editMode}
               editHandler={() => console.log('edit')}
               deleteHandler={() => console.log('delete')}
             />

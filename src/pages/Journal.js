@@ -8,30 +8,11 @@ import ToolBar from '../components/ToolBar';
 import useNavigateTo from '../hooks/useNavigateTo';
 import JournalViewDesktop from '../components/JournalViewDesktop';
 import JournalViewMobile from '../components/JournalViewMobile';
-
-const entries = [
-  {
-    id: 1,
-    title: 'Entry 1',
-    tags: 'one,two,three',
-    body: 'Blah',
-  },
-  {
-    id: 2,
-    title: 'Entry 2',
-    tags: 'one,two,three',
-    body: 'Blah',
-  },
-  {
-    id: 3,
-    title: 'Entry 3',
-    tags: 'one,two,three',
-    body: 'Blah',
-  },
-];
+import { useSelector } from 'react-redux';
 
 function Journal() {
   const [screenWidth, setScreenWidth] = useState(document.body.clientWidth);
+  const entries = useSelector((state) => state.entries.entries);
 
   useEffect(() => {
     const resizeWindow = () => {

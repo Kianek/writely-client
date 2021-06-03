@@ -1,9 +1,19 @@
 import PropTypes from 'prop-types';
 import './entry-item.scss';
+import { useDispatch } from 'react-redux';
+import { selectEntryById } from '../../store/entries';
 
 function EntryItem({ entry, onClick }) {
+  const dispatch = useDispatch();
+
   return (
-    <li id="entry-item" onClick={() => console.log(entry.id)}>
+    <li
+      id="entry-item"
+      onClick={() => {
+        onClick();
+        dispatch(selectEntryById({ id: entry.id }));
+      }}
+    >
       <h2>{entry.title}</h2>
     </li>
   );
