@@ -1,6 +1,20 @@
 @import '../layout.scss';
 
 #entry-list {
+  align-self: flex-start;
+  min-width: 240px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  margin: auto;
+
+  li {
+    overflow-y: scroll;
+  }
+
+  p {
+    margin: auto;
+    text-align: center;
+  }
 }
