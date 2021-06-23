@@ -47,6 +47,9 @@ function Dashboard() {
       )}
       <Panel>
         <Row right>
+          <Button circle info onClick={toggleEditMode}>
+            <i className="fas fa-edit"></i>
+          </Button>
           <Button circle success onClick={() => setShowModal(true)}>
             <i className="fas fa-plus"></i>
           </Button>
@@ -57,8 +60,6 @@ function Dashboard() {
               key={journal.id}
               journal={journal}
               editMode={editMode}
-              editHandler={() => console.log('edit')}
-              deleteHandler={() => console.log('delete')}
             />
           ))}
         </List>
