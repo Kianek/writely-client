@@ -3,14 +3,13 @@ import './entry-item.scss';
 import { useDispatch } from 'react-redux';
 import { selectEntryById } from '../../store/entries';
 
-function EntryItem({ entry, onClick }) {
+function EntryItem({ entry }) {
   const dispatch = useDispatch();
 
   return (
     <li
       id="entry-item"
       onClick={() => {
-        onClick();
         dispatch(selectEntryById({ id: entry.id }));
       }}
     >
