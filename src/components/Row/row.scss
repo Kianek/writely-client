@@ -24,4 +24,8 @@
   &.spaceEvenly {
     justify-content: space-evenly;
   }
+
+  &.stretch {
+    align-items: stretch;
+  }
 }
