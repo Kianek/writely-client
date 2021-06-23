@@ -1,25 +1,15 @@
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '../Button';
-import Column from '../Column';
-import Row from '../Row';
 import TextInput from '../TextInput';
 import './journal-item.scss';
-import { Fragment, useState } from 'react';
-import JournalItemControls from './JournalItemControls';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { selectJournalById } from '../../store/journals';
+import classNames from 'classnames';
 
-function JournalItem({
-  journal,
-  editMode,
-  editHandler,
-  deleteHandler,
-  toggleEditMode,
-}) {
+function JournalItem({ journal, editMode }) {
   const history = useHistory();
-  // const {journalId} = useParams();
   const dispatch = useDispatch();
   const [editTitle, setEditTitle] = useState(journal.title);
 
@@ -30,7 +20,12 @@ function JournalItem({
   };
 
   return (
-    <li className="journal-item" data-testid="journal-item">
+    <li
+      className={classNames('journal-item', {
+        edit: editMode,
+      })}
+      data-testid="journal-item"
+    >
       <div className="content">
         <div className="main-content">
           {editMode ? (
@@ -42,12 +37,6 @@ function JournalItem({
             Open
           </Button>
         </div>
-        <JournalItemControls
-          editMode={editMode}
-          editHandler={editHandler}
-          toggleEditMode={toggleEditMode}
-          deleteHandler={deleteHandler}
-        />
       </div>
     </li>
   );
