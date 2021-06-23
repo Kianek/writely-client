@@ -30,7 +30,49 @@ const journals = [
   {
     id: 3,
     title: 'Favorite Movies',
-    entries: getEntries(3, 7),
+    entries: getEntries(3, 15),
+    createdAt: new Date().toLocaleTimeString(),
+  },
+  {
+    id: 4,
+    title: 'Favorite Movies',
+    entries: getEntries(4, 15),
+    createdAt: new Date().toLocaleTimeString(),
+  },
+  {
+    id: 5,
+    title: 'Favorite Movies',
+    entries: getEntries(5, 15),
+    createdAt: new Date().toLocaleTimeString(),
+  },
+  {
+    id: 6,
+    title: 'Favorite Movies',
+    entries: getEntries(6, 15),
+    createdAt: new Date().toLocaleTimeString(),
+  },
+  {
+    id: 7,
+    title: 'Favorite Movies',
+    entries: getEntries(7, 15),
+    createdAt: new Date().toLocaleTimeString(),
+  },
+  {
+    id: 8,
+    title: 'Favorite Movies',
+    entries: getEntries(8, 15),
+    createdAt: new Date().toLocaleTimeString(),
+  },
+  {
+    id: 9,
+    title: 'Favorite Movies',
+    entries: getEntries(9, 15),
+    createdAt: new Date().toLocaleTimeString(),
+  },
+  {
+    id: 10,
+    title: 'Favorite Movies',
+    entries: getEntries(10, 15),
     createdAt: new Date().toLocaleTimeString(),
   },
 ];
