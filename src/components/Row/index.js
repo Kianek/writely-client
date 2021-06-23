@@ -10,6 +10,7 @@ function Row({
   spaceAround,
   spaceBetween,
   spaceEvenly,
+  stretch,
 }) {
   const classes = classNames(
     {
@@ -18,6 +19,7 @@ function Row({
       spaceAround,
       spaceBetween,
       spaceEvenly,
+      stretch,
     },
     className
   );
@@ -37,6 +39,7 @@ Row.propTypes = {
   spaceAround: PropTypes.bool,
   spaceBetween: PropTypes.bool,
   spaceEvenly: PropTypes.bool,
+  stretch: PropTypes.bool,
 };
 
 export default Row;
