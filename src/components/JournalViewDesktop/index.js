@@ -8,13 +8,13 @@ function JournalViewDesktop({ entries }) {
   return (
     <div id="journal-view" data-testid="jv-desktop">
       <Row left spaceBetween>
-        <Button info onClick={useNavigateTo('/dashboard')}>
+        <Button circle info onClick={useNavigateTo('/dashboard')}>
           <i className="fas fa-arrow-left" />
         </Button>
         <Button success>New Entry</Button>
       </Row>
-      <Row spaceEvenly>
-        <EntryList entries={entries} />
+      <Row spaceEvenly stretch>
+        <EntryList entries={entries} height="70vh" />
         <EntryView />
       </Row>
     </div>
