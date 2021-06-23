@@ -22,6 +22,7 @@
       .title {
         border-bottom: 1px solid $light-gray;
         margin-bottom: auto;
+        text-align: center;
         width: 100%;
       }
 
@@ -32,34 +33,6 @@
         border-bottom: 1px solid $light-gray;
         color: $gray;
         width: 100%;
-      }
-    }
-
-    .controls {
-      @extend %column;
-
-      .edit,
-      .delete {
-        background-color: $white;
-        border: none;
-        border-radius: 3px;
-        color: $secondary;
-        font-size: 1.2em;
-        height: 3em;
-        width: 2em;
-      }
-
-      .edit:hover,
-      .delete:hover {
-        cursor: pointer;
-      }
-
-      .edit:hover {
-        color: $info;
-      }
-
-      .delete:hover {
-        color: $danger;
       }
     }
   }
