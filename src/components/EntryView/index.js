@@ -12,10 +12,7 @@ import { useSelector } from 'react-redux';
 import { selectCurrentEntry } from '../../store/entries';
 
 function EntryView({ className }) {
-  const entry = useSelector((state) => {
-    console.log(state.entries);
-    return state.entries.selectedEntry;
-  });
+  const entry = useSelector(selectCurrentEntry);
 
   const [title, setTitle] = useState(entry.title);
   const [tags, setTags] = useState(entry.tags);
@@ -27,6 +24,10 @@ function EntryView({ className }) {
     setBody(entry.body);
   }, [entry, setTitle, setTags, setBody]);
 
+  const onChange = (setter) => (event) => {
+    setter(event.target.value);
+  };
+
   const onSubmit = () => console.log('click');
 
   return (
@@ -36,15 +37,20 @@ function EntryView({ className }) {
           <TextInput
             fluid
             placeholder="Title"
-            onChange={setTitle}
+            onChange={onChange(setTitle)}
             value={title}
           />
           <Padding amount="0.25em" />
-          <TextInput fluid placeholder="Tags" onChange={setTags} value={tags} />
+          <TextInput
+            fluid
+            placeholder="Tags"
+            onChange={onChange(setTags)}
+            value={tags}
+          />
           <Padding amount="0.25em" />
           <TextArea
             fluid
-            onChange={(e) => setBody(e.target.value)}
+            onChange={onChange(setBody)}
             placeholder="Body"
             value={body}
           />
