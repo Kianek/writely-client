@@ -8,6 +8,7 @@
 
   &:hover {
     background-color: darken($color, 10%);
+    border: 1px solid darken($color, 10%);
     box-shadow: none;
   }
 }
