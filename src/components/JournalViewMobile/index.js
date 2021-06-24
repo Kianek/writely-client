@@ -4,24 +4,24 @@ import useOutsideClick from '../../hooks/useOutsideClick';
 import classNames from 'classnames';
 import Button from '../Button';
 import Column from '../Column';
-import List from '../List';
-import EntryItem from '../EntryItem';
 import EntryView from '../EntryView';
 import Row from '../Row';
 import './journal-view-mobile.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadEntries, selectEntryById } from '../../store/entries';
-import {} from '../../store/journals';
+import { loadEntries } from '../../store/entries';
+import EntryList from '../EntryList';
 
 function JournalViewMobile({ entries }) {
-  const journal = useSelector((state) => state.journals.selectedJournal);
   const dispatch = useDispatch();
+  const journal = useSelector((state) => state.journals.selectedJournal);
   const [menuActive, setMenuActive] = useState(null);
   const [entry, setEntry] = useState({});
 
   useEffect(() => {
     dispatch(loadEntries({ entries: journal.entries }));
-    setEntry(entries[0]);
+    if (entries && entries[0]) {
+      setEntry(entries[0]);
+    }
     console.log(entry);
   }, [journal, dispatch, setEntry, entry]);
 
@@ -34,10 +34,13 @@ function JournalViewMobile({ entries }) {
   };
 
   const closeMenu = () => {
+    if (!menuActive) {
+      return;
+    }
     setMenuActive(false);
   };
 
-  // useOutsideClick('.entry-list', closeMenu);
+  useOutsideClick('#sidebar', closeMenu);
 
   return (
     <Fragment>
@@ -50,9 +53,10 @@ function JournalViewMobile({ entries }) {
         </Button>
       </Row>
       <div
-        className={classNames('entry-list', {
+        id="sidebar"
+        className={classNames({
           active: menuActive,
-          inactive: menuActive === false && menuActive !== null,
+          inactive: menuActive !== null && menuActive === false,
         })}
       >
         <div className="content">
@@ -60,11 +64,7 @@ function JournalViewMobile({ entries }) {
             <Button block success>
               New Entry
             </Button>
-            <List>
-              {entries.map((entry) => (
-                <EntryItem key={entry.id} entry={entry} onClick={closeMenu} />
-              ))}
-            </List>
+            <EntryList entries={entries} height="90vh" />
           </Column>
         </div>
       </div>
