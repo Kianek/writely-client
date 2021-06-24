@@ -8,7 +8,10 @@ import useOutsideClick from '../../hooks/useOutsideClick';
 function Navbar() {
   let loggedIn = true;
   const [active, setActive] = useState(false);
-  useOutsideClick('#dropdown', () => setActive(false));
+
+  const closeMenu = () => setActive(false);
+
+  useOutsideClick('#dropdown', closeMenu);
 
   return (
     <header>
