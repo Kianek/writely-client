@@ -7,17 +7,4 @@
   overflow-y: auto;
   padding: 0;
   width: 100%;
-
-  &.borderless {
-    border: 1px solid $white;
-  }
-
-  &.fluid {
-    @extend %fluid;
-  }
-
-  &.thin {
-    padding: 0.25em;
-    width: 200px;
-  }
 }
