@@ -1,9 +1,11 @@
 @import '../colors.scss';
 @import '../layout.scss';
 
+$width: 250px;
+
 @keyframes slide-in {
   from {
-    left: -210px;
+    left: -$width;
   }
 
   to {
@@ -17,11 +19,9 @@
   }
 
   to {
-    left: -210px;
+    left: -$width;
   }
 }
-
-$width: 250px;
 
 #jv-mobile {
   position: relative;
@@ -35,7 +35,7 @@ $width: 250px;
   margin: auto;
 }
 
-.entry-list {
+#sidebar {
   background-color: $white;
   height: 101vh;
   margin: auto;
