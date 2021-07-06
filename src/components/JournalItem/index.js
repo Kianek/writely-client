@@ -44,9 +44,7 @@ function JournalItem({ journal, editMode }) {
 
 JournalItem.propTypes = {
   journal: PropTypes.object.isRequired,
-  editHandler: PropTypes.func.isRequired,
   editMode: PropTypes.bool.isRequired,
-  deleteHandler: PropTypes.func.isRequired,
 };
 
 export default JournalItem;
