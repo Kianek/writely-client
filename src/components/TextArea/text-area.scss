@@ -7,6 +7,8 @@
 
   textarea {
     font-size: 1em;
+    background-color: rgb(250, 250, 250);
+    border-radius: 3px 3px 0 0;
     border: none;
     border-bottom: 2px solid $light-gray;
     columns: 25;
