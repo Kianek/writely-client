@@ -13,8 +13,8 @@ describe('TextInput', () => {
   test('calls event handler on typing', () => {
     const jimEmail = 'jim@gmail.com';
     let email = '';
-    let eventHandler = jest.fn((value) => {
-      email += value;
+    let eventHandler = jest.fn((event) => {
+      email += event.target.value;
     });
     render(
       <TextInput placeholder="Email" onChange={eventHandler} value={email} />
