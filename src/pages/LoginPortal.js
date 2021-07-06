@@ -9,6 +9,7 @@ import NavLink from '../components/NavLink';
 import useNavigateTo from '../hooks/useNavigateTo';
 import { useHistory } from 'react-router';
 import Padding from '../components/Padding';
+import { setState } from '../utils';
 
 function LoginPortal() {
   const history = useHistory();
@@ -34,7 +35,7 @@ function LoginPortal() {
         <Form onSubmit={onSubmit}>
           <TextInput
             placeholder="Email"
-            onChange={setEmail}
+            onChange={setState(setEmail)}
             validators={[isEmail]}
             value={email}
           />
@@ -42,7 +43,7 @@ function LoginPortal() {
           <TextInput
             password
             placeholder="Password"
-            onChange={setPassword}
+            onChange={setState(setPassword)}
             validators={[isEmpty]}
             value={password}
           />

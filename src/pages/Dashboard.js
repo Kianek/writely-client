@@ -8,6 +8,7 @@ import TextInput from '../components/TextInput';
 import Row from '../components/Row';
 import { useSelector } from 'react-redux';
 import { selectJournals } from '../store/journals';
+import { setState } from '../utils';
 
 function Dashboard() {
   const [showModal, setShowModal] = useState(false);
@@ -39,7 +40,7 @@ function Dashboard() {
         >
           <h2>Name it something nice</h2>
           <TextInput
-            onChange={setNewTitle}
+            onChange={setState(setNewTitle)}
             placeholder="Title"
             value={newTitle}
           />

@@ -5,6 +5,7 @@ import ToolBar from '../components/ToolBar';
 import { useState } from 'react';
 import useNavigateTo from '../hooks/useNavigateTo';
 import Form from '../components/Form';
+import { setState } from '../utils';
 
 function ChangePassword() {
   const [loading, setLoading] = useState(false);
@@ -26,10 +27,10 @@ function ChangePassword() {
           <h1>Change Password</h1>
           <PasswordGroup
             errors={{ errors, handler: setErrors }}
-            password={{ text: password, handler: setPassword }}
+            password={{ text: password, handler: setState(setPassword) }}
             confirmPassword={{
               text: confirmPassword,
-              handler: setConfirmPassword,
+              handler: setState(setConfirmPassword),
             }}
           />
           <Button block loading={loading} submit>

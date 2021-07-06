@@ -5,12 +5,14 @@ import Panel from '../components/Panel';
 import TextInput from '../components/TextInput';
 import ToolBar from '../components/ToolBar';
 import useNavigateTo from '../hooks/useNavigateTo';
+import { setState } from '../utils';
 import { isEmail } from '../validators';
 
 function ChangeEmail() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
+
   return (
     <main>
       <Panel>
@@ -26,7 +28,7 @@ function ChangeEmail() {
             errors={errors}
             errorHandler={setErrors}
             placeholder="New Email"
-            onChange={setEmail}
+            onChange={setState(setEmail)}
             validators={[isEmail]}
             value={email}
           />

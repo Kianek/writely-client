@@ -8,6 +8,7 @@ import Rule from '../components/Rule';
 import TextInput from '../components/TextInput';
 import ToolBar from '../components/ToolBar';
 import useNavigateTo from '../hooks/useNavigateTo';
+import { setState } from '../utils';
 
 function Register() {
   const [firstName, setFirstName] = useState('');
@@ -37,24 +38,31 @@ function Register() {
         <Form onSubmit={onSubmit}>
           <TextInput
             placeholder="First Name"
-            onChange={setFirstName}
+            onChange={setState(setFirstName)}
             value={firstName}
           />
           <Padding amount="0.25em" />
           <TextInput
             placeholder="Last Name"
-            onChange={setLastName}
+            onChange={setState(setLastName)}
             value={lastName}
           />
           <Padding amount="0.25em" />
-          <TextInput placeholder="Email" onChange={setEmail} value={email} />
+          <TextInput
+            placeholder="Email"
+            onChange={setState(setEmail)}
+            value={email}
+          />
           <Rule />
           <PasswordGroup
-            errors={{ errors: passwordErrors, handler: setPasswordErrors }}
-            password={{ text: password, handler: setPassword }}
+            errors={{
+              errors: passwordErrors,
+              handler: setPasswordErrors,
+            }}
+            password={{ text: password, handler: setState(setPassword) }}
             confirmPassword={{
               text: confirmPassword,
-              handler: setConfirmPassword,
+              handler: setState(setConfirmPassword),
             }}
           />
           <Button block submit disabled={passwordErrors.length > 0}>

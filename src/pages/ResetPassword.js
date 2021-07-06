@@ -5,6 +5,7 @@ import Panel from '../components/Panel';
 import PasswordGroup from '../components/PasswordGroup';
 import ToolBar from '../components/ToolBar';
 import useNavigateTo from '../hooks/useNavigateTo';
+import { setState } from '../utils';
 
 function ResetPassword() {
   const [errors, setErrors] = useState([]);
@@ -31,10 +32,10 @@ function ResetPassword() {
         <Form onSubmit={onSubmit}>
           <PasswordGroup
             errors={{ errors: errors, handler: setErrors }}
-            password={{ text: password, handler: setPassword }}
+            password={{ text: password, handler: setState(setPassword) }}
             confirmPassword={{
               text: confirmPassword,
-              handler: setConfirmPassword,
+              handler: setState(setConfirmPassword),
             }}
           />
           <Button block submit>
