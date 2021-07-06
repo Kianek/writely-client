@@ -49,15 +49,11 @@ function TextInput({
 
   const validate = debounce(validateInput, 500);
 
-  const setState = (event) => {
-    onChange(event.target.value);
-  };
-
   return (
     <div className={classNames('input-group', { fluid })}>
       <input
         type={password ? 'password' : 'text'}
-        onChange={setState}
+        onChange={onChange}
         onKeyUp={validate}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
