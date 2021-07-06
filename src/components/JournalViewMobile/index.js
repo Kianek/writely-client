@@ -7,23 +7,17 @@ import Column from '../Column';
 import EntryView from '../EntryView';
 import Row from '../Row';
 import './journal-view-mobile.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadEntries } from '../../store/entries';
 import EntryList from '../EntryList';
 
 function JournalViewMobile({ entries }) {
-  const dispatch = useDispatch();
-  const journal = useSelector((state) => state.journals.selectedJournal);
   const [menuActive, setMenuActive] = useState(null);
   const [entry, setEntry] = useState({});
 
   useEffect(() => {
-    dispatch(loadEntries({ entries: journal.entries }));
     if (entries && entries[0]) {
       setEntry(entries[0]);
     }
-    console.log(entry);
-  }, [journal, dispatch, setEntry, entry]);
+  }, [setEntry, entry]);
 
   const toggleMenu = () => {
     if (menuActive === null) {
@@ -60,12 +54,7 @@ function JournalViewMobile({ entries }) {
         })}
       >
         <div className="content">
-          <Column>
-            <Button block success>
-              New Entry
-            </Button>
-            <EntryList entries={entries} height="90vh" />
-          </Column>
+          <EntryList entries={entries} height="75vh" />
         </div>
       </div>
       <div id="jv-mobile" data-testid="jv-mobile">
