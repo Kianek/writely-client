@@ -14,6 +14,7 @@ function EntryItem({ entry }) {
       }}
     >
       <h2>{entry.title}</h2>
+      <p>{entry.lastModified}</p>
     </li>
   );
 }
