@@ -2,15 +2,10 @@ import classNames from 'classnames';
 
 import './list.scss';
 
-function List({ borderless, className, children, fluid, height, thin }) {
-  const classes = {
-    borderless,
-    fluid,
-    thin,
-  };
+function List({ className, children, height }) {
   return (
     <ul
-      className={classNames('list', classes, className)}
+      className={classNames('list', className)}
       data-testid="list"
       style={{ height: height ? height : '400px' }}
     >
