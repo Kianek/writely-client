@@ -1,0 +1,10 @@
+@import '../colors';
+
+#selector {
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  color: $gray;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 90%;
+}
