@@ -6,6 +6,10 @@ export const capitalize = (value) => {
   return value[0].toLocaleUpperCase() + value.slice(1);
 };
 
+export const setState = (setter) => (event) => {
+  setter(event.target.value);
+};
+
 export const invokeSequence = (
   funcArray,
   opts = { returnValues: false, filter: null, arg: null }
