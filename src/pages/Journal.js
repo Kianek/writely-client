@@ -1,18 +1,16 @@
-import { Fragment, useEffect, useState } from 'react';
-import Button from '../components/Button';
-import Column from '../components/Column';
-import EntryList from '../components/EntryList';
-import EntryView from '../components/EntryView';
-import Row from '../components/Row';
-import ToolBar from '../components/ToolBar';
-import useNavigateTo from '../hooks/useNavigateTo';
+import { useEffect, useState } from 'react';
 import JournalViewDesktop from '../components/JournalViewDesktop';
 import JournalViewMobile from '../components/JournalViewMobile';
 import { useSelector } from 'react-redux';
 
 function Journal() {
+  const journal = useSelector((state) => state.journals.selectedJournal);
+  const [selectedEntry, setSelectedEntry] = useState({});
   const [screenWidth, setScreenWidth] = useState(document.body.clientWidth);
-  const entries = useSelector((state) => state.entries.entries);
+
+  useEffect(() => {
+    setSelectedEntry(journal.entries[0]);
+  }, [selectedEntry, setSelectedEntry]);
 
   useEffect(() => {
     const resizeWindow = () => {
@@ -27,9 +25,9 @@ function Journal() {
   }, [screenWidth]);
 
   return screenWidth >= 700 ? (
-    <JournalViewDesktop entries={entries} />
+    <JournalViewDesktop entries={journal.entries} />
   ) : (
-    <JournalViewMobile entries={entries} />
+    <JournalViewMobile entries={journal.entries} />
   );
 }
 
