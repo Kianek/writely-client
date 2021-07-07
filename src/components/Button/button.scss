@@ -53,17 +53,6 @@
     @include color-btn($danger);
   }
 
-  &.disabled {
-    background-color: $light-gray;
-
-    &:hover {
-      border-bottom: 1px solid $light-gray;
-      box-shadow: none;
-      cursor: not-allowed;
-      transform: none;
-    }
-  }
-
   &.flat {
     border: 1px solid $light-gray;
     background-color: rgba($light-gray, 0.5);
@@ -102,5 +91,17 @@
 
   &.success {
     @include color-btn($success);
+  }
+
+  &.disabled {
+    background-color: $light-gray;
+
+    &:hover {
+      background-color: $light-gray;
+      border: 1px solid $light-gray;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
   }
 }
