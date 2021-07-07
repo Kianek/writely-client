@@ -73,7 +73,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   password: PropTypes.bool,
   validators: PropTypes.arrayOf(PropTypes.func),
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 export default TextInput;

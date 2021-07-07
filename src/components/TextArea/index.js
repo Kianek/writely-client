@@ -25,7 +25,7 @@ function TextArea({ fluid, placeholder, onChange, value }) {
 TextArea.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 export default TextArea;
