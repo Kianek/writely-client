@@ -30,33 +30,50 @@ function Dashboard() {
     closeModal();
   };
 
+  const onConfirmEdit = () => {
+    setNewTitle('');
+    closeModal();
+  };
+
+  const newJournalModal = (
+    <Modal
+      heading="Create a New Journal"
+      onConfirm={onConfirm}
+      onCancel={onCancel}
+    >
+      <h2>Name it something nice</h2>
+      <TextInput
+        onChange={setState(setNewTitle)}
+        placeholder="Title"
+        value={newTitle}
+      />
+    </Modal>
+  );
+
+  const editJournalModal = (
+    <Modal
+      heading="Rename Journal"
+      onConfirm={onConfirmEdit}
+      onCancel={onCancel}
+    >
+      <h2>Give it a better name than before</h2>
+      <TextInput
+        onChange={setState(setNewTitle)}
+        placeholder="Updated Title"
+        value={newTitle}
+      />
+    </Modal>
+  );
+
   return (
     <Fragment>
-      {showModal && (
-        <Modal
-          heading="Create a New Journal"
-          onConfirm={onConfirm}
-          onCancel={onCancel}
-        >
-          <h2>Name it something nice</h2>
-          <TextInput
-            onChange={setState(setNewTitle)}
-            placeholder="Title"
-            value={newTitle}
-          />
-        </Modal>
-      )}
+      {showModal && (editMode ? editJournalModal : newJournalModal)}
       <Panel>
         <Row right>
           <Button circle info onClick={toggleEditMode} toggled={editMode}>
             <i className="fas fa-edit"></i>
           </Button>
-          <Button
-            circle
-            success
-            onClick={() => setShowModal(true)}
-            disabled={editMode}
-          >
+          <Button circle success onClick={showModal} disabled={editMode}>
             <i className="fas fa-plus"></i>
           </Button>
         </Row>
@@ -66,6 +83,7 @@ function Dashboard() {
               key={journal.id}
               journal={journal}
               editMode={editMode}
+              editHandler={() => setShowModal(true)}
             />
           ))}
         </List>
