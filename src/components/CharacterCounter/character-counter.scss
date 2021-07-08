@@ -1,0 +1,8 @@
+@import '../colors';
+
+#char-counter {
+  &.error {
+    color: $danger;
+    font-weight: 900;
+  }
+}

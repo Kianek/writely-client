@@ -1,0 +1,10 @@
+@import '../colors';
+
+#entry-status {
+  color: $gray;
+  display: flex;
+  flex-direction: row;
+  font-size: 0.75rem;
+  justify-content: space-between;
+  width: inherit;
+}
