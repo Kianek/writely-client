@@ -6,7 +6,8 @@
   color: $white;
   transform: none;
 
-  &:hover {
+  &:hover,
+  &.toggled {
     background-color: darken($color, 10%);
     border: 1px solid darken($color, 10%);
     box-shadow: none;
@@ -25,7 +26,8 @@
   padding: 0.5em 1em;
   transition: 0.2s;
 
-  &:hover {
+  &:hover,
+  &.toggled {
     @include box-shadow($y: 5px, $spread: 0, $blur: 8px);
     border: 1px solid $white;
     cursor: pointer;
@@ -57,7 +59,8 @@
     border: 1px solid $light-gray;
     background-color: rgba($light-gray, 0.5);
 
-    &:hover {
+    &:hover,
+    &.toggled {
       background-color: $white;
       border: 1px solid $light-gray;
       box-shadow: none;
@@ -82,7 +85,8 @@
     transition: 0.2s;
     transform: translateY(0);
 
-    &:hover {
+    &:hover,
+    &.toggled {
       border: 1px solid $light-gray;
       box-shadow: none;
       transform: translateY(2px);
@@ -94,11 +98,12 @@
   }
 
   &.disabled {
-    background-color: $light-gray;
+    background-color: $gray;
+    border: 1px solid $gray;
 
     &:hover {
-      background-color: $light-gray;
-      border: 1px solid $light-gray;
+      background-color: $gray;
+      border: 1px solid $gray;
       box-shadow: none;
       cursor: not-allowed;
       transform: none;
