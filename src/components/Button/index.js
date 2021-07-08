@@ -17,6 +17,7 @@ function Button({
   raised,
   submit,
   success,
+  toggled,
   children,
 }) {
   const loadingOrDisabled = loading || disabled;
@@ -32,6 +33,7 @@ function Button({
       outline,
       raised,
       success,
+      toggled,
     },
     className
   );
