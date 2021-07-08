@@ -48,10 +48,15 @@ function Dashboard() {
       )}
       <Panel>
         <Row right>
-          <Button circle info onClick={toggleEditMode}>
+          <Button circle info onClick={toggleEditMode} toggled={editMode}>
             <i className="fas fa-edit"></i>
           </Button>
-          <Button circle success onClick={() => setShowModal(true)}>
+          <Button
+            circle
+            success
+            onClick={() => setShowModal(true)}
+            disabled={editMode}
+          >
             <i className="fas fa-plus"></i>
           </Button>
         </Row>
