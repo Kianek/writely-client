@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import Button from '../Button';
 import Column from '../Column';
@@ -10,13 +9,13 @@ import './entry-view.scss';
 import Padding from '../Padding';
 import { useSelector } from 'react-redux';
 import { selectCurrentEntry } from '../../store/entries';
+import EntryStatus from '../EntryStatus';
 
-function EntryView({ className }) {
-  const entry = useSelector(selectCurrentEntry);
-
-  const [title, setTitle] = useState(entry.title);
-  const [tags, setTags] = useState(entry.tags);
-  const [body, setBody] = useState(entry.body);
+function EntryView({ className, entry }) {
+  const [isDirty, setIsDirty] = useState(false);
+  const [title, setTitle] = useState(entry.title || '');
+  const [tags, setTags] = useState(entry.tags || '');
+  const [body, setBody] = useState(entry.body || '');
 
   useEffect(() => {
     setTitle(entry.title);
@@ -24,11 +23,27 @@ function EntryView({ className }) {
     setBody(entry.body);
   }, [entry, setTitle, setTags, setBody]);
 
-  const onChange = (setter) => (event) => {
-    setter(event.target.value);
+  const checkIsDirty = (previousValue, value) => {
+    if (!isDirty && previousValue !== value) {
+      setIsDirty(true);
+    }
   };
 
-  const onSubmit = () => console.log('click');
+  const onChange = (value, setter) => (event) => {
+    const { target } = event;
+    checkIsDirty(value, target.value);
+
+    setter(target.value);
+  };
+
+  const onSubmit = () => {
+    if (!isDirty) {
+      console.log('no changes made yet');
+      return;
+    }
+    console.log('click');
+    setIsDirty(false);
+  };
 
   return (
     <div id="entry-view">
@@ -37,24 +52,25 @@ function EntryView({ className }) {
           <TextInput
             fluid
             placeholder="Title"
-            onChange={onChange(setTitle)}
+            onChange={onChange(title, setTitle)}
             value={title}
           />
           <Padding amount="0.25em" />
           <TextInput
             fluid
             placeholder="Tags"
-            onChange={onChange(setTags)}
+            onChange={onChange(tags, setTags)}
             value={tags}
           />
           <Padding amount="0.25em" />
           <TextArea
             fluid
-            onChange={onChange(setBody)}
+            onChange={onChange(body, setBody)}
             placeholder="Body"
             value={body}
           />
-          <Button block flat submit>
+          <EntryStatus bodyText={body} touched={isDirty} />
+          <Button block flat disabled={!isDirty} submit>
             Save
           </Button>
         </Form>
