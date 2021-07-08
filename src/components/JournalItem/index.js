@@ -8,10 +8,9 @@ import { useDispatch } from 'react-redux';
 import { selectJournalById } from '../../store/journals';
 import classNames from 'classnames';
 
-function JournalItem({ journal, editMode }) {
+function JournalItem({ journal, editMode, editHandler }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [editTitle, setEditTitle] = useState(journal.title);
 
   const openJournal = () => {
     console.log(`opening journal ${journal.id}`);
@@ -28,13 +27,9 @@ function JournalItem({ journal, editMode }) {
     >
       <div className="content">
         <div className="main-content">
-          {editMode ? (
-            <TextInput fluid onChange={setEditTitle} value={editTitle} />
-          ) : (
-            <p className="title">{journal.title}</p>
-          )}
-          <Button block flat onClick={openJournal}>
-            Open
+          <p className="title">{journal.title}</p>
+          <Button block flat onClick={editMode ? editHandler : openJournal}>
+            {editMode ? 'Edit' : 'Open'}
           </Button>
         </div>
       </div>
