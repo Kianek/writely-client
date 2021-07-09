@@ -7,7 +7,7 @@ $danger: #f86a6a;
 $white: #fff;
 $black: #000;
 $gray: #818181;
-$light-gray: #e9e7e7;
+$light-gray: #c9c9c9;
 
 @mixin box-shadow($x: 0, $y: 6px, $blur: 6px, $spread: 1px, $color: $black) {
   box-shadow: $x $y $blur $spread rgba($color, 0.4);
