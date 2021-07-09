@@ -56,8 +56,9 @@
   }
 
   &.flat {
-    border: 1px solid $light-gray;
-    background-color: rgba($light-gray, 0.5);
+    $flat-gray: rgba($light-gray, 0.5);
+    border: 1px solid $flat-gray;
+    background-color: $flat-gray;
 
     &:hover,
     &.toggled {
@@ -98,12 +99,13 @@
   }
 
   &.disabled {
-    background-color: $gray;
-    border: 1px solid $gray;
+    background-color: $light-gray;
+    border: 1px solid $light-gray;
+    color: $white;
 
     &:hover {
-      background-color: $gray;
-      border: 1px solid $gray;
+      background-color: $light-gray;
+      border: 1px solid $light-gray;
       box-shadow: none;
       cursor: not-allowed;
       transform: none;
