@@ -73,20 +73,33 @@ function Dashboard() {
           <Button circle info onClick={toggleEditMode} toggled={editMode}>
             <i className="fas fa-edit"></i>
           </Button>
-          <Button circle success onClick={showModal} disabled={editMode}>
+          <Button
+            circle
+            success
+            onClick={() => setShowModal(true)}
+            disabled={editMode}
+          >
             <i className="fas fa-plus"></i>
           </Button>
         </Row>
-        <List ordered>
-          {journals.map((journal) => (
-            <JournalItem
-              key={journal.id}
-              journal={journal}
-              editMode={editMode}
-              editHandler={() => setShowModal(true)}
-            />
-          ))}
-        </List>
+        <div
+          style={{
+            borderRadius: '5px',
+            boxShadow: 'inset 0 3px 5px 2px rgba(0, 0, 0, 0.2)',
+            zIndex: '20',
+          }}
+        >
+          <List ordered>
+            {journals.map((journal) => (
+              <JournalItem
+                key={journal.id}
+                journal={journal}
+                editMode={editMode}
+                editHandler={() => setShowModal(true)}
+              />
+            ))}
+          </List>
+        </div>
       </Panel>
     </Fragment>
   );
