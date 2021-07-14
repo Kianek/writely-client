@@ -14,7 +14,7 @@ import sortOptions, {
 } from '../../utils/sort-options';
 import './entry-list.scss';
 
-function EntryList({ className, entries, height }) {
+function EntryList({ callback, entries, height }) {
   const [sortOrder, setSortOrder] = useState(DATE_DESC);
   const [searchText, setSearchText] = useState('');
   const [sortedEntries, setSortedEntries] = useState([]);
@@ -47,7 +47,7 @@ function EntryList({ className, entries, height }) {
       <List height={height}>
         {entries?.length > 0 ? (
           sortedEntries.map((entry) => (
-            <EntryItem key={entry.id} entry={entry} />
+            <EntryItem key={entry.id} entry={entry} eventHandler={callback} />
           ))
         ) : (
           <p>No entries yet.</p>
@@ -61,6 +61,7 @@ function EntryList({ className, entries, height }) {
 }
 
 EntryList.propTypes = {
+  callback: PropTypes.func,
   entries: PropTypes.arrayOf(PropTypes.object),
 };
 
