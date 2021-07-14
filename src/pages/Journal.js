@@ -24,11 +24,7 @@ function Journal() {
     };
   }, [screenWidth]);
 
-  return screenWidth >= 700 ? (
-    <JournalViewDesktop entries={journal.entries} />
-  ) : (
-    <JournalViewMobile entries={journal.entries} />
-  );
+  return screenWidth >= 700 ? <JournalViewDesktop /> : <JournalViewMobile />;
 }
 
 export default Journal;
