@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Button from '../Button';
 import Column from '../Column';
@@ -11,11 +10,12 @@ import { useSelector } from 'react-redux';
 import { selectCurrentEntry } from '../../store/entries';
 import EntryStatus from '../EntryStatus';
 
-function EntryView({ className, entry }) {
+function EntryView() {
+  const entry = useSelector(selectCurrentEntry);
   const [isDirty, setIsDirty] = useState(false);
-  const [title, setTitle] = useState(entry.title || '');
-  const [tags, setTags] = useState(entry.tags || '');
-  const [body, setBody] = useState(entry.body || '');
+  const [title, setTitle] = useState('');
+  const [tags, setTags] = useState('');
+  const [body, setBody] = useState('');
 
   useEffect(() => {
     setTitle(entry.title);
