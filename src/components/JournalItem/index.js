@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { selectJournalById } from '../../store/journals';
 import classNames from 'classnames';
+import { loadEntries } from '../../store/entries';
 
 function JournalItem({ journal, editMode, editHandler }) {
   const history = useHistory();
@@ -15,6 +16,7 @@ function JournalItem({ journal, editMode, editHandler }) {
   const openJournal = () => {
     console.log(`opening journal ${journal.id}`);
     dispatch(selectJournalById({ id: journal.id }));
+    dispatch(loadEntries({ entries: journal.entries }));
     history.push(`/journal/${journal.id}`);
   };
 
