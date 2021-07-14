@@ -3,16 +3,16 @@ import './entry-item.scss';
 import { useDispatch } from 'react-redux';
 import { selectEntryById } from '../../store/entries';
 
-function EntryItem({ entry }) {
+function EntryItem({ entry, eventHandler }) {
   const dispatch = useDispatch();
 
+  const onClick = () => {
+    dispatch(selectEntryById({ id: entry.id }));
+    eventHandler();
+  };
+
   return (
-    <li
-      id="entry-item"
-      onClick={() => {
-        dispatch(selectEntryById({ id: entry.id }));
-      }}
-    >
+    <li id="entry-item" onClick={onClick}>
       <h2>{entry.title}</h2>
       <p>{entry.lastModified}</p>
     </li>
