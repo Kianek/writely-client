@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import useNavigateTo from '../../hooks/useNavigateTo';
 import Button from '../Button';
 import EntryList from '../EntryList';
 import EntryView from '../EntryView';
 import Row from '../Row';
 
-function JournalViewDesktop({ entries }) {
+function JournalViewDesktop() {
+  const entries = useSelector((state) => state.entries.entries);
   const [entry, setEntry] = useState({});
 
   useEffect(() => {
