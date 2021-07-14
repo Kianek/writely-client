@@ -8,8 +8,10 @@ import EntryView from '../EntryView';
 import Row from '../Row';
 import './journal-view-mobile.scss';
 import EntryList from '../EntryList';
+import { useSelector } from 'react-redux';
 
-function JournalViewMobile({ entries }) {
+function JournalViewMobile() {
+  const entries = useSelector((state) => state.entries.entries);
   const [menuActive, setMenuActive] = useState(null);
   const [entry, setEntry] = useState({});
 
@@ -54,7 +56,7 @@ function JournalViewMobile({ entries }) {
         })}
       >
         <div className="content">
-          <EntryList entries={entries} height="75vh" />
+          <EntryList callback={closeMenu} entries={entries} height="75vh" />
         </div>
       </div>
       <div id="jv-mobile" data-testid="jv-mobile">
