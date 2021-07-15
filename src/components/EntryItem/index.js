@@ -8,7 +8,10 @@ function EntryItem({ entry, eventHandler }) {
 
   const onClick = () => {
     dispatch(selectEntryById({ id: entry.id }));
-    eventHandler();
+
+    if (eventHandler) {
+      eventHandler();
+    }
   };
 
   return (
