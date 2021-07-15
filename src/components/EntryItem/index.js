@@ -7,7 +7,7 @@ function EntryItem({ entry, eventHandler }) {
   const dispatch = useDispatch();
 
   const onClick = () => {
-    dispatch(selectEntryById({ id: entry.id }));
+    dispatch(selectEntryById({ id: entry.id, tags: entry.tags.split(',') }));
 
     if (eventHandler) {
       eventHandler();
