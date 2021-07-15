@@ -6,6 +6,7 @@ export const entriesSlice = createSlice({
   initialState: {
     entries: [],
     selectedEntry: {},
+    selectedEntryTags: [],
     status: status.idle,
     error: null,
   },
@@ -17,10 +18,9 @@ export const entriesSlice = createSlice({
       state.entries = action.payload.entries;
     },
     selectEntryById(state, action) {
-      state.selectedEntry = state.entries.find(
-        (e) => e.id === action.payload.id
-      );
-      console.log(state.selectedEntry);
+      const { id, tags } = action.payload;
+      state.selectedEntry = state.entries.find((e) => e.id === id);
+      state.selectedEntryTags = tags;
     },
     updateEntry(state, action) {},
     deleteEntry(state, action) {},
