@@ -35,3 +35,14 @@ export const invokeSequence = (
 
   funcArray.forEach((func) => func());
 };
+
+export const filterTags = (entries, tags) => {
+  if (!entries || !tags) {
+    return [];
+  }
+
+  return entries.filter((e) => {
+    const entryTags = e.tags.split(',');
+    return tags.split(',').every((tag) => entryTags.includes(tag));
+  });
+};
