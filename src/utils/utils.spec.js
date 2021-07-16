@@ -1,4 +1,4 @@
-import { capitalize, invokeSequence } from '.';
+import { capitalize, filterTags, invokeSequence } from '.';
 
 describe('utils', () => {
   describe('capitalize', () => {
@@ -75,6 +75,41 @@ describe('utils', () => {
       expect(values[0]).toBe(4);
       expect(values[1]).toBe(6);
       expect(values[2]).toBe(8);
+    });
+  });
+
+  describe('filterTags', () => {
+    test('returns empty array if entries arg is null or empty', () => {
+      const tags = ['one', 'two'];
+      const entries = [];
+      expect(filterTags(entries, tags)).toHaveLength(0);
+      expect(filterTags(undefined, undefined)).toHaveLength(0);
+    });
+
+    test('filters entries not containing all tags', () => {
+      const tags = 'dog,tree,frog';
+      const entries = [
+        { tags },
+        { tags: 'London,mouse' },
+        { tags: 'orange' },
+        { tags },
+      ];
+
+      const result = filterTags(entries, tags);
+      expect(result).toHaveLength(2);
+      expect(result[0].tags).toBe(tags);
+      expect(result[1].tags).toBe(tags);
+    });
+
+    test('returns empty array if no tags match', () => {
+      const entries = [
+        { tags: 'moose,reptar' },
+        { tags: 'chicken' },
+        { tags: 'mars' },
+        { tags: 'slayer' },
+      ];
+
+      expect(filterTags(entries, 'unique,tags')).toHaveLength(0);
     });
   });
 });
