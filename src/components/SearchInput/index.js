@@ -1,19 +1,24 @@
 import './search-input.scss';
 
-function SearchInput({ value, onChange }) {
+function SearchInput({ value, onChange, onKeyUp }) {
   const setValue = (event) => {
-    onChange(event.target.value);
+    onChange(event);
+    console.log(event);
   };
 
   return (
-    <input
-      id="search-input"
-      type="search"
-      name="search"
-      placeholder="Search by tags"
-      onChange={setValue}
-      value={value}
-    />
+    <>
+      <label htmlFor="search" hidden />
+      <input
+        id="search-input"
+        type="search"
+        name="search"
+        placeholder="Search by tags"
+        onChange={setValue}
+        onKeyUp={onKeyUp}
+        value={value}
+      />
+    </>
   );
 }
 
