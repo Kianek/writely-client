@@ -37,12 +37,20 @@ export const invokeSequence = (
 };
 
 export const filterTags = (entries, tags) => {
-  if (!entries || !tags) {
+  if (
+    entries === null ||
+    entries === undefined ||
+    tags === null ||
+    tags === undefined
+  ) {
     return [];
+  }
+  if (tags.trim() === '') {
+    return entries;
   }
 
   return entries.filter((e) => {
     const entryTags = e.tags.split(',');
-    return tags.split(',').every((tag) => entryTags.includes(tag));
+    return tags.split(',').every((tag) => entryTags.includes(tag.trim()));
   });
 };
