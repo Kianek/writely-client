@@ -80,9 +80,12 @@ describe('utils', () => {
 
   describe('filterTags', () => {
     test('returns empty array if entries arg is null or empty', () => {
-      const tags = ['one', 'two'];
+      const tags = 'one,two';
       const entries = [];
       expect(filterTags(entries, tags)).toHaveLength(0);
+    });
+
+    test('returns empty array if entries or tags args are null or empty', () => {
       expect(filterTags(undefined, undefined)).toHaveLength(0);
     });
 
