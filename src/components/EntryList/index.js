@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { debounce } from 'lodash';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import EntryItem from '../EntryItem';
@@ -13,6 +14,7 @@ import sortOptions, {
   DATE_DESC,
 } from '../../utils/sort-options';
 import './entry-list.scss';
+import { filterTags } from '../../utils';
 
 function EntryList({ callback, entries, height }) {
   const [sortOrder, setSortOrder] = useState(DATE_DESC);
@@ -22,6 +24,16 @@ function EntryList({ callback, entries, height }) {
   const formatEntries = useCallback(() => {
     return [...entries].sort(sortOptions[sortOrder]);
   }, [entries, sortOrder]);
+
+  const filterEntriesBySearchText = debounce(() => {
+    const filteredEntries = filterTags(entries, searchText);
+    const formattedEntries = filteredEntries.sort(sortOptions[sortOrder]);
+    setSortedEntries(formattedEntries);
+  }, 500);
+
+  const onSearchChange = (event) => {
+    setSearchText(event.target.value);
+  };
 
   const onSelect = (event) => {
     const { options } = event.target;
@@ -38,7 +50,11 @@ function EntryList({ callback, entries, height }) {
   return (
     <section id="entry-list" data-testid="entry-list">
       <EntryListControls>
-        <SearchInput onChange={setSearchText} value={searchText} />
+        <SearchInput
+          onChange={onSearchChange}
+          onKeyUp={filterEntriesBySearchText}
+          value={searchText}
+        />
         <Selector
           onChange={onSelect}
           options={[DATE_DESC, DATE_ASC, TITLE_ASC, TITLE_DESC]}
